@@ -22,10 +22,15 @@
       property="og:description"
       content="Estratégia, conteúdo, redes sociais, mídia paga, SEO, websites e identidade visual em um plano integrado."
     />
-    <meta property="og:site_name" content="Led Marketing" />
+    <meta property="og:site_name" content="LEDM | Led Marketing" />
     <meta
       property="og:image"
-      content="https://ledmarketing.com.br/wp-content/uploads/2022/10/logo-sites-ledmkt.png"
+      content="https://ledmarketing-landing.vercel.app/assets/logo-ledmkt-2026.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta
+      property="og:image:alt"
+      content="Logo LEDM 2026, lâmpada amarela e wordmark branco."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -38,12 +43,10 @@
     />
     <meta
       name="twitter:image"
-      content="https://ledmarketing.com.br/wp-content/uploads/2022/10/logo-sites-ledmkt.png"
+      content="https://ledmarketing-landing.vercel.app/assets/logo-ledmkt-2026.png"
     />
-    <link
-      rel="icon"
-      href="https://ledmarketing.com.br/wp-content/uploads/2022/10/logo-sites-ledmkt.png"
-    />
+    <link rel="icon" type="image/png" href="/favicon-ledmkt-2026.png" />
+    <link rel="apple-touch-icon" href="/favicon-ledmkt-2026.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -166,6 +169,14 @@
               "@type": "Answer",
               "text": "Você pode preencher o formulário desta página e continuar pelo WhatsApp, onde revisa e envia sua mensagem, ou acessar o briefing publicado pela Led. A conversa inicial serve para apresentar o negócio e os objetivos, para então avaliar quais soluções fazem sentido."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "Quais ferramentas de tecnologia a LEDM apresenta?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O site da LEDM apresenta LEDM.ai, onHub e LedChat como frentes de tecnologia: LEDM.ai reúne orientações de marketing com IA, onHub ajuda a organizar arquivos e documentos e LedChat pode orientar visitantes do site. Consulte ledm.com.br para detalhes atualizados sobre disponibilidade e uso."
+            }
           }
         ]
       }
@@ -175,12 +186,16 @@
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="#inicio" aria-label="Led Marketing — início">
+        <a
+          class="brand"
+          href="#inicio"
+          aria-label="LEDM — Led Marketing, início"
+        >
           <img
-            src="https://ledmarketing.com.br/wp-content/uploads/2022/10/logo-sites-ledmkt.png"
-            alt="Led Marketing"
-            width="200"
-            height="64"
+            src="/assets/logo-ledmkt-2026.png"
+            alt="LEDM"
+            width="422"
+            height="124"
           />
         </a>
         <button
@@ -196,6 +211,7 @@
           <a href="#solucoes">Soluções</a>
           <a href="#clientes">Clientes</a>
           <a href="#videos">Vídeos</a>
+          <a href="#tecnologia">Tecnologia</a>
           <a href="#metodo">Método</a>
           <a href="#duvidas">FAQ</a>
           <a
@@ -525,34 +541,121 @@
             </h2>
           </div>
           <p>
-            Uma rede construída em projetos reais e frentes de comunicação
-            integradas. Os nomes abaixo refletem clientes e plataformas que a
-            Led cita publicamente.
+            Uma rede construída em projetos e frentes de comunicação integradas.
+            A seção reúne marcas publicadas nos sites LEDM e Led Marketing e
+            separa os canais de mídia atendidos.
           </p>
         </div>
         <div class="client-groups">
-          <div class="client-group">
-            <p class="group-label">CLIENTES CITADOS NO SITE DA LED</p>
-            <div
-              class="client-wordmarks"
-              aria-label="Clientes apresentados no site da Led"
-            >
-              <span class="client-wordmark client-dwa"
-                >DWA <small>Adm</small></span
-              >
-              <span class="client-wordmark client-belli">Bellistyle</span>
-              <span class="client-wordmark client-topcar">TopCar</span>
-            </div>
+          <div class="client-group client-logo-group">
+            <p class="group-label">MARCAS PUBLICADAS NO SITE LEDM</p>
+            <ul class="client-logo-wall">
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/csf.png"
+                  alt="CSF Capital Serviços"
+                  width="150"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/energimais.png"
+                  alt="Energimais Instalações e Sistemas"
+                  width="150"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/terrace.png"
+                  alt="Construtora Terrace"
+                  width="150"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/rv-emergencias.png"
+                  alt="RV Emergências"
+                  width="150"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/vatten-pharma.png"
+                  alt="Vatten Pharma"
+                  width="150"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/avoid-germs.png"
+                  alt="Avoid Germs"
+                  width="150"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/diuro-diagnosticos.png"
+                  alt="Clínica Diuro Diagnósticos"
+                  width="150"
+                  height="100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+              <li class="client-logo-card">
+                <img
+                  src="/assets/clients/goldlife.png"
+                  alt="GoldLife Emergências"
+                  width="150"
+                  height="58"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </li>
+            </ul>
           </div>
-          <div class="client-group platform-group">
-            <p class="group-label">PLATAFORMAS DE MÍDIA NO PORTFÓLIO</p>
-            <div
-              class="platform-list"
-              aria-label="Plataformas atendidas pela Led"
-            >
-              <span>Google Ads</span><span>YouTube Ads</span
-              ><span>Meta Ads</span> <span>LinkedIn Ads</span
-              ><span>TikTok Ads</span><span>Globo Ads</span>
+          <div class="client-pair">
+            <div class="client-group">
+              <p class="group-label">CLIENTES CITADOS NO SITE ANTERIOR</p>
+              <div
+                class="client-wordmarks"
+                aria-label="Clientes apresentados no site da Led Marketing"
+              >
+                <span class="client-wordmark client-dwa"
+                  >DWA <small>Adm</small></span
+                >
+                <span class="client-wordmark client-belli">Bellistyle</span>
+                <span class="client-wordmark client-topcar">TopCar</span>
+              </div>
+            </div>
+            <div class="client-group platform-group">
+              <p class="group-label">PLATAFORMAS DE MÍDIA NO PORTFÓLIO</p>
+              <div
+                class="platform-list"
+                aria-label="Plataformas atendidas pela Led"
+              >
+                <span>Google Ads</span><span>YouTube Ads</span
+                ><span>Meta Ads</span> <span>LinkedIn Ads</span
+                ><span>TikTok Ads</span><span>Globo Ads</span>
+              </div>
             </div>
           </div>
         </div>
@@ -695,9 +798,141 @@
         </div>
       </section>
 
+      <section
+        class="technology-section section-pad"
+        id="tecnologia"
+        aria-labelledby="technology-title"
+      >
+        <div class="technology-heading">
+          <div>
+            <div class="section-kicker">
+              <span>07</span> Tecnologia e experiência digital
+            </div>
+            <h2 id="technology-title">
+              A experiência digital<br /><span>também pode conversar.</span>
+            </h2>
+          </div>
+          <div class="technology-intro-copy">
+            <p>
+              O ecossistema LEDM apresenta ferramentas para marketing,
+              organização digital e atendimento com inteligência artificial.
+              Conheça essas frentes no site LEDM.
+            </p>
+            <a
+              class="arrow-link"
+              href="https://ledm.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Explorar o ecossistema LEDM <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div
+          class="technology-tools"
+          aria-label="Ferramentas apresentadas no site LEDM"
+        >
+          <article class="technology-card">
+            <picture class="technology-card-picture">
+              <source
+                media="(prefers-reduced-motion: reduce)"
+                srcset="/assets/tech-mobile-still.png"
+              />
+              <img
+                src="/assets/tech-mobile.gif"
+                alt="Pessoa usando smartphone em um ambiente de trabalho"
+                width="180"
+                height="180"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div class="technology-card-copy">
+              <span class="technology-card-label">IA PARA MARKETING</span>
+              <h3>LEDM.ai</h3>
+              <p>
+                Ideias e orientação prática de marketing digital com apoio de
+                inteligência artificial.
+              </p>
+            </div>
+          </article>
+          <article class="technology-card">
+            <picture class="technology-card-picture">
+              <source
+                media="(prefers-reduced-motion: reduce)"
+                srcset="/assets/tech-laptop-still.png"
+              />
+              <img
+                src="/assets/tech-laptop.gif"
+                alt="Pessoa trabalhando em um notebook"
+                width="240"
+                height="240"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div class="technology-card-copy">
+              <span class="technology-card-label">ATENDIMENTO DIGITAL</span>
+              <h3>LedChat</h3>
+              <p>
+                Uma frente de atendimento com IA para responder dúvidas e
+                orientar quem visita o site.
+              </p>
+            </div>
+          </article>
+          <article class="technology-card technology-card-onhub">
+            <div class="onhub-mark" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M7 14.5h13l4 4h17v18H7z" />
+                <path d="M7 14.5V11h13l4 4h10" />
+                <path d="M16 27h16M16 32h11" />
+              </svg>
+            </div>
+            <div class="technology-card-copy">
+              <span class="technology-card-label">ORGANIZAÇÃO DIGITAL</span>
+              <h3>onHub</h3>
+              <p>
+                Organização inteligente de arquivos e documentos em um espaço
+                digital.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="technology-journey">
+          <div class="technology-journey-heading">
+            <span>UMA JORNADA CONECTADA</span>
+            <h3>Da ideia ao próximo passo.</h3>
+          </div>
+          <ol
+            class="technology-steps"
+            aria-label="Etapas ilustrativas da experiência digital"
+          >
+            <li>
+              <span class="technology-step-number">01</span>
+              <strong>Ideia</strong>
+              <small>Entender o que importa.</small>
+            </li>
+            <li>
+              <span class="technology-step-number">02</span>
+              <strong>Conteúdo</strong>
+              <small>Transformar intenção em mensagem.</small>
+            </li>
+            <li>
+              <span class="technology-step-number">03</span>
+              <strong>Conversa</strong>
+              <small>Orientar e esclarecer.</small>
+            </li>
+            <li>
+              <span class="technology-step-number">04</span>
+              <strong>Próximo passo</strong>
+              <small>Conectar a uma ação.</small>
+            </li>
+          </ol>
+        </div>
+      </section>
+
       <section class="faq section-pad" id="duvidas" aria-labelledby="faq-title">
         <div class="faq-intro">
-          <div class="section-kicker"><span>07</span> Perguntas frequentes</div>
+          <div class="section-kicker"><span>08</span> Perguntas frequentes</div>
           <h2 id="faq-title">
             Respostas para<br /><span>planejar melhor.</span>
           </h2>
@@ -911,6 +1146,20 @@
               sentido.
             </p>
           </details>
+          <details class="faq-item">
+            <summary>
+              Quais ferramentas de tecnologia a LEDM apresenta?<span
+                aria-hidden="true"
+              ></span>
+            </summary>
+            <p>
+              O site da LEDM apresenta LEDM.ai, onHub e LedChat como frentes de
+              tecnologia: LEDM.ai reúne orientações de marketing com IA, onHub
+              ajuda a organizar arquivos e documentos e LedChat pode orientar
+              visitantes do site. Consulte ledm.com.br para detalhes atualizados
+              sobre disponibilidade e uso.
+            </p>
+          </details>
         </div>
       </section>
 
@@ -948,12 +1197,12 @@
           <a
             class="brand footer-brand"
             href="#inicio"
-            aria-label="Led Marketing — voltar ao início"
+            aria-label="LEDM — Led Marketing, voltar ao início"
             ><img
-              src="https://ledmarketing.com.br/wp-content/uploads/2022/10/logo-sites-ledmkt.png"
-              alt="Led Marketing"
-              width="200"
-              height="64"
+              src="/assets/logo-ledmkt-2026.png"
+              alt="LEDM"
+              width="422"
+              height="124"
               loading="lazy"
           /></a>
           <p>Comunicação estratégica com performance na publicidade.</p>
@@ -962,7 +1211,8 @@
           <div>
             <p class="footer-label">NAVEGUE</p>
             <a href="#solucoes">Soluções</a><a href="#clientes">Clientes</a
-            ><a href="#videos">Vídeos</a><a href="#metodo">Nosso método</a
+            ><a href="#videos">Vídeos</a><a href="#tecnologia">Tecnologia</a
+            ><a href="#metodo">Nosso método</a
             ><a href="#duvidas">Perguntas frequentes</a>
           </div>
           <div>

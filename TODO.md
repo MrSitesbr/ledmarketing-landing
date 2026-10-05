@@ -35,3 +35,11 @@ Expandir a seção de perguntas e respostas para pelo menos 12 perguntas e respo
 ## [x] Build estático correto na Vercel
 
 Configurar o repositório para executar `pnpm build:static` e publicar apenas `dist/public` na raiz de `https://ledmarketing-landing.vercel.app/`. A URL pública deve entregar a landing page HTML da Led em vez do bundle de servidor `dist/index.js`, com estilos e scripts estáticos funcionando. Registrar a correção na branch `main` do GitHub conectada para que a integração de deploy da Vercel possa reconstruir a página. Não alterar o site WordPress em `ledmarketing.com.br`.
+
+## [x] Atualizar a identidade visual para LEDM 2026 e refinar a prova de marcas
+
+Revisitar o layout à luz de `contactsdr.com.br`, aproveitando a hierarquia direta do hero, CTA destacado, prova visual por marcas e FAQ expansível sem copiar identidade, paleta ou textos da referência. Trocar o logo antigo da Led Marketing pelo logo LEDM 2026 e atualizar o favicon do site e o logo de metadados do projeto. Manter azul/amarelo LEDM. Na seção “Clientes e parceiros”, manter os três clientes publicados no site anterior (DWA Adm, Bellistyle e TopCar) e acrescentar um grid responsivo dos oito logos publicados no carrossel de `ledm.com.br` (CSF, Energimais, Construtora Terrace, RV Emergências, Vatten Pharma, Avoid Germs, Clínica Diuro e GoldLife), com textos alternativos; separar as plataformas de mídia e não inventar parceiros formais.
+
+## [x] Adicionar a nova seção LEDM de tecnologia e um gráfico animado acessível
+
+Criar uma seção curta que apresente, com descrições fiéis ao site LEDM, LEDM.ai, onHub e LedChat, incluindo um link para `https://ledm.com.br/`. Reutilizar dois GIFs publicados nesse site (pessoa usando smartphone e pessoa trabalhando em notebook), sem apresentá-las como clientes, equipe ou depoimentos; carregar as imagens de forma lazy e oferecer PNG estático quando `prefers-reduced-motion` estiver ativo. Criar um diagrama HTML/CSS responsivo e animado de quatro passos — ideia, conteúdo, conversa e próximo passo — sem métricas, contadores ou resultados inventados. Acrescentar a nova âncora ao menu e uma pergunta/resposta correspondente no FAQ visível e no JSON-LD `FAQPage`.

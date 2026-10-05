@@ -1,4 +1,4 @@
 export default {
   logoUrl:
-    "https://ledmarketing.com.br/wp-content/uploads/2022/10/logo-sites-ledmkt.png",
+    "https://ledmarketing-landing.vercel.app/assets/logo-ledmkt-2026.png",
 };
