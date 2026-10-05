@@ -1,13 +1,33 @@
 # Entregas da landing page Led Marketing
 
 ## [x] Landing page única, média e orientada à conversão
+
 Criar uma página institucional/comercial única, em português brasileiro, que condense o conteúdo real de `ledmarketing.com.br` em extensão média; usar `contactsdr.com.br` apenas como referência contemporânea de organização e conversão, preservando o posicionamento, a identidade, os serviços e os canais de contato próprios da Led Marketing, sem associá-la a serviços de SDR. Incluir apresentação inicial da Led Marketing com proposta de valor clara e chamada principal para contato; resumo institucional enxuto da agência e de sua atuação em comunicação estratégica e performance publicitária; hierarquia de conteúdo orientada à conversão e navegação por âncoras.
 
 ## [x] Serviços, método e conteúdo fiel às fontes
+
 Apresentar serviços cobrindo conteúdo, redes sociais, mídia paga, SEO, websites e identidade visual. Explicar o processo de trabalho em planejamento, lançamento e otimização. Usar fielmente textos, diferenciais, provas e informações disponíveis em `ledmarketing.com.br`, condensando-os sem criar alegações não verificadas.
 
 ## [x] Contatos, chamadas e dados institucionais reais
+
 Distribuir chamadas para contato ao longo da página, usando apenas canais e informações reais publicados no site da Led. Incluir rodapé com dados institucionais, contatos e links reais relevantes da Led Marketing.
 
 ## [x] Layout responsivo e legível
+
 Entregar layout responsivo para desktop e dispositivos móveis, com boa legibilidade e ações de contato em destaque.
+
+## [x] Formulário destacado no hero
+
+Incluir no banner hero um formulário acessível e responsivo com nome, empresa (opcional), WhatsApp e solução de interesse. Validar os campos obrigatórios; ao continuar, preparar uma mensagem com esses dados no número oficial da Led `5511974698846`, abrir o WhatsApp e deixar a pessoa revisar e enviar. O site não deve salvar os dados nem enviar mensagens sem ação do visitante, pois a página é estática e não existe um backend de captação configurado.
+
+## [x] Seção de clientes e parceiros, sem depoimentos
+
+Substituir a área de depoimentos por uma seção visual intitulada “Clientes e parceiros”. Mostrar DWA Adm, Bellistyle e TopCar como clientes citados no site atual da Led, e apresentar em bloco separado as plataformas de mídia que a Led atende. Não criar textos de depoimentos, nomes/logos de parceiros formais, certificações ou vínculos não verificados.
+
+## [x] Seção de Shorts verticais e vídeo amplo
+
+Acrescentar uma seção com vídeos Shorts no formato 9:16 e, em outra seção, um player maior no formato 16:9. Usar vídeos publicados no canal oficial `@ledmkt`; carregar sem autoplay e de forma responsiva/lazy.
+
+## [x] FAQ extensa com conteúdo SEO fiel
+
+Expandir a seção de perguntas e respostas para pelo menos 12 perguntas e respostas completas sobre os serviços, canais, método e briefing da Led. Incluir naturalmente termos de busca relevantes como agência/marketing digital, redes sociais, mídia paga/Google Ads/Meta Ads, SEO para sites e YouTube, website, landing page, identidade visual, conteúdo e e-mail marketing. Manter as respostas presentes no HTML inicial e iguais à marcação estruturada FAQPage; sem keyword stuffing, dados inventados ou promessa de ranking/resultados.
