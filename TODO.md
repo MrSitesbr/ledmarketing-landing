@@ -43,3 +43,11 @@ Revisitar o layout à luz de `contactsdr.com.br`, aproveitando a hierarquia dire
 ## [x] Adicionar a nova seção LEDM de tecnologia e um gráfico animado acessível
 
 Criar uma seção curta que apresente, com descrições fiéis ao site LEDM, LEDM.ai, onHub e LedChat, incluindo um link para `https://ledm.com.br/`. Reutilizar dois GIFs publicados nesse site (pessoa usando smartphone e pessoa trabalhando em notebook), sem apresentá-las como clientes, equipe ou depoimentos; carregar as imagens de forma lazy e oferecer PNG estático quando `prefers-reduced-motion` estiver ativo. Criar um diagrama HTML/CSS responsivo e animado de quatro passos — ideia, conteúdo, conversa e próximo passo — sem métricas, contadores ou resultados inventados. Acrescentar a nova âncora ao menu e uma pergunta/resposta correspondente no FAQ visível e no JSON-LD `FAQPage`.
+
+## [x] Simulação visual de atendimento para o LedChat
+
+Criar uma seção demonstrativa de conversa de atendimento ao cliente, com os seis diálogos fornecidos pelo usuário: “Olá, estou procurando um apartamento.”; “Claro 😊 Você pretende comprar ou alugar?”; “Comprar, com dois quartos.”; “Perfeito! Em qual região você prefere?”; “Perto da praia.”; “Ótima escolha 🌊 Qual faixa de valor?”. Identificar visivelmente que é uma simulação de interface, não um atendimento ao vivo. Não enviar mensagens, conectar serviço real, coletar nem armazenar dados; manter todas as mensagens legíveis com `prefers-reduced-motion`.
+
+## [x] Seção do fluxo Kanban para produção e publicação
+
+Criar uma seção visual que mostre como o conteúdo percorre as etapas de um Kanban até virar publicação, aproveitando a ideia do código anexado pelo usuário: cartão em produção, publicação e prévia social. Organizar as etapas como Pauta, Em produção, Revisão e Publicado; destacar uma prévia Instagram demonstrativa com tema imobiliário, sem apresentar os exemplos “Mansão no Canto do Forte”, “Garden Village” ou o perfil de exemplo como cliente, campanha ou publicação real. Adaptar a identidade LEDM, isolar os estilos à seção, não carregar as imagens/emoji aleatórias externas do snippet, assegurar responsividade e reduzir/parar as animações sob `prefers-reduced-motion`. Acrescentar uma pergunta/resposta correspondente à FAQ visível e ao JSON-LD `FAQPage`.
