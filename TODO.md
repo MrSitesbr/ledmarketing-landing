@@ -31,3 +31,7 @@ Acrescentar uma seção com vídeos Shorts no formato 9:16 e, em outra seção, 
 ## [x] FAQ extensa com conteúdo SEO fiel
 
 Expandir a seção de perguntas e respostas para pelo menos 12 perguntas e respostas completas sobre os serviços, canais, método e briefing da Led. Incluir naturalmente termos de busca relevantes como agência/marketing digital, redes sociais, mídia paga/Google Ads/Meta Ads, SEO para sites e YouTube, website, landing page, identidade visual, conteúdo e e-mail marketing. Manter as respostas presentes no HTML inicial e iguais à marcação estruturada FAQPage; sem keyword stuffing, dados inventados ou promessa de ranking/resultados.
+
+## [ ] Build estático correto na Vercel
+
+Configurar o repositório para executar `pnpm build:static` e publicar apenas `dist/public` na raiz de `https://ledmarketing-landing.vercel.app/`. A URL pública deve entregar a landing page HTML da Led em vez do bundle de servidor `dist/index.js`, com estilos e scripts estáticos funcionando. Registrar a correção na branch `main` do GitHub conectada para que a integração de deploy da Vercel possa reconstruir a página. Não alterar o site WordPress em `ledmarketing.com.br`.

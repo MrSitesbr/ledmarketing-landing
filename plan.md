@@ -12,7 +12,7 @@ Transformar o conteúdo publicado em `ledmarketing.com.br` em uma página instit
 - Método em três passos com os nomes existentes: Plano de voo, Lançamento e Órbita. Trocar a seção de depoimentos por “Clientes e parceiros”: exibir DWA Adm, Bellistyle e TopCar somente como clientes citados no site da Led; mostrar em bloco separado as plataformas de mídia publicadas como canais atendidos. A fonte pública não identifica nominalmente parceiros formais, então não criar ou rotular parcerias como oficiais.
 - FAQ extensa, em formato de acordeão, com 14 perguntas e respostas originais sobre marketing digital, agência de marketing, serviços, método, redes sociais, mídia paga, SEO, website/landing page, identidade visual, conteúdo, segmentos atendidos, investimento, prazos e briefing. Usar palavras-chave do portfólio publicado de forma natural; manter todas as respostas no HTML inicial e incluir dados estruturados FAQPage equivalentes. Não prometer posições ou resultados em buscadores. CTA final e rodapé com CNPJ `61.867.464/0001-94`, briefing, WhatsApp e redes confirmadas.
 - O formulário e as chamadas utilizam o WhatsApp publicado pela Led: `https://api.whatsapp.com/send/?phone=5511974698846&text&type=phone_number&app_absent=0`; links públicos: briefing, Instagram `@ledmarketing.br`, Facebook `ledmkt`, LinkedIn `ledmkt` e canal oficial YouTube `@ledmkt`.
-- A página nova será entregue como prévia Manus. Não substituir nem publicar sobre o domínio WordPress atual sem solicitação/autorização específica.
+- A página foi implantada pelo usuário no projeto Vercel ligado ao repositório privado do GitHub `MrSitesbr/ledmarketing-landing`; a URL informada de produção é `https://ledmarketing-landing.vercel.app/`. Não substituir nem publicar sobre o domínio WordPress atual `ledmarketing.com.br` sem solicitação/autorização específica.
 
 ## Direção visual
 
@@ -38,6 +38,7 @@ Transformar o conteúdo publicado em `ledmarketing.com.br` em uma página instit
 - `client/src/main.tsx`: menu móvel e preparação, no navegador, de mensagem do formulário para WhatsApp; o site não persistirá os dados.
 - `client/public/manus-routes.json`: declara a única rota `/` antes da inicialização do servidor; o logo oficial permanece referenciado pela URL HTTPS já publicada pela Led.
 - `app.config.ts`: URL HTTPS durável do logo oficial para metadados do projeto Manus, preservando qualquer campo existente.
+- `vercel.json`: definir `pnpm build:static` como comando de build e `dist/public` como saída estática publicada. O script padrão `pnpm build` compila também o servidor para `dist/index.js`; essa saída não pode ser servida como página inicial da landing.
 - `TODO.md`: critérios de resultado desta entrega e status atualizado com base nas evidências.
 
 ## Vídeos publicados pela Led
