@@ -28,7 +28,7 @@ Manter uma página institucional/comercial única, de extensão média, em portu
 - **Paradigma de layout:** narrativa vertical de largura controlada, hero em duas zonas, serviços agrupados, método numerado, quadro Kanban ligado a prévia de conteúdo, faixa/grid de marcas, mídia, nova seção de tecnologia e fechamento com FAQ/contato.
 - **Elementos de assinatura:** (1) lâmpada amarela e wordmark LEDM oficial; (2) pontos/linhas amarelos no diagrama animado; (3) cards editoriais que lembram um quadro de produção e mensagens em bolhas de conversa.
 - **Interação:** navegação por âncoras, menu móvel acessível, FAQ nativa e links oficiais. A demonstração de chat é somente visual; não oferece input/enviar. Estados hover/focus claros; nenhuma informação essencial depende de movimento.
-- **Animação:** fluxo suave do diagrama, cartão do Kanban e entrada dos balões, além de GIFs somente como ilustração; sem autoplay de vídeo, sem contadores ou barras quantitativas fictícias. Parar movimentos decorativos sob `prefers-reduced-motion`, mantendo todos os textos e etapas visíveis.
+- **Animação:** a cada entrada do bloco na viewport, reiniciar o chat com as falas sequenciadas, pausas e indicador de digitação, e rodar o ciclo Kanban de 12 segundos: cartão viaja de Em produção a Publicado, o cartão de apoio sobe, o quadro recua/desaparece e a prévia social sobe, pausa e reinicia. Pausar/resetar ao sair da viewport. Respeitar `prefers-reduced-motion`, mantendo a conversa completa, o quadro e a prévia visíveis sem animação.
 - **Tipografia:** `Manrope` para títulos e `Inter` para leitura, com fallbacks sans-serif.
 - **Essência:** agência integrada que conecta marca, conteúdo e performance; personalidade estratégica, acessível e inventiva.
 - **Voz:** direta, humana e orientada à ação, sem promessas grandiosas.
@@ -40,15 +40,15 @@ Manter uma página institucional/comercial única, de extensão média, em portu
 - Site estático de rota única, sem login, banco de dados ou lógica de servidor; usar HTML inicial semântico e React/Vite já instalado, `pnpm build:static` e saída pública em `dist/public` para Vercel.
 - `client/index.html`: seções existentes, quadro Kanban e conversa de demonstração, FAQ de 16 itens no HTML inicial e JSON-LD `FAQPage` equivalente.
 - `client/src/index.css`: identidade azul/amarela, estilo escopado para simulação de chat e Kanban, layout responsivo, foco visível e regras `prefers-reduced-motion`.
-- `client/src/main.tsx`: preservar navegação móvel e formulário existentes; as novas demonstrações não precisam de JavaScript, API ou armazenamento.
-- Kanban: quatro etapas ilustrativas (Pauta, Em produção, Revisão e Publicado), um cartão demonstrativo e uma prévia social estilizada localmente; não copiar seletores globais, scripts atrasados nem imagens aleatórias externas do código anexado.
-- Chat: os seis diálogos fornecidos em marcação semântica de mensagens; emojis em texto nativo, sem imagens emoji externas; rótulos visíveis para deixar clara a simulação.
+- `client/src/main.tsx`: preservar navegação móvel e formulário existentes; usar `IntersectionObserver` e temporizadores locais para iniciar/reiniciar as demonstrações enquanto visíveis, sem API, envio ou armazenamento.
+- Kanban: quatro etapas ilustrativas (Pauta, Em produção, Revisão e Publicado), cartão demonstrativo móvel, cartão substituto que sobe quando o principal sai, desaparecimento do quadro e entrada ascendente da prévia social num ciclo de 12 segundos; não copiar seletores globais, scripts atrasados nem imagens aleatórias externas do código anexado.
+- Chat: seis diálogos em marcação semântica; revelar cada fala em ordem, inserir indicador de digitação antes das respostas e repetir a simulação quando visível. Emojis em texto nativo; mensagens completas continuam acessíveis e nenhuma mensagem é enviada.
 - `client/public/assets/`: cópias locais dos logos LEDM, dos oito logos de marcas e dos dois GIFs fornecidos pelo site LEDM; incluir os quadros PNG estáticos usados pela preferência de movimento reduzido.
 - `client/public/favicon-ledmkt-2026.png`: novo símbolo/fav icon LEDM.
 - `client/public/manus-routes.json`: manter a rota única `/` e o título público atual.
 - `app.config.ts`: `logoUrl` literal para o novo logo público; preservar a forma exigida pelo WebDev.
 - `vercel.json`: conservar `pnpm build:static` como comando de build e `dist/public` como saída.
-- `TODO.md`: manter os resultados novos pendentes até haver evidência de implementação e publicação.
+- `TODO.md`: manter cada resultado em aberto até a respectiva implementação estar concluída e comprovada; só então marcá-lo como concluído.
 
 ## Fontes e ativos conferidos em 05/10/2026
 

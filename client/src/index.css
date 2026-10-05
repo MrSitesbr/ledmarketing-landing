@@ -3067,3 +3067,298 @@ button {
     left: calc(100% - 8px);
   }
 }
+
+/* Animações das demonstrações: só começam quando a secção está visível. */
+.publication-kanban {
+  --kanban-cycle: 12s;
+}
+.kanban-columns {
+  position: relative;
+}
+.kanban-card-filler {
+  position: relative;
+  margin-top: 8px;
+}
+.kanban-progress > span {
+  left: 0;
+  opacity: 0;
+  animation: none;
+}
+.publication-kanban.is-playing .kanban-panel {
+  animation: kanban-board-cycle var(--kanban-cycle) linear infinite;
+  transform-origin: center center;
+  will-change: opacity, transform;
+}
+.publication-kanban.is-playing .kanban-progress > span {
+  animation: kanban-progress-flow var(--kanban-cycle) ease-in-out infinite;
+}
+.publication-kanban.is-playing .kanban-card-featured {
+  animation: kanban-original-hide var(--kanban-cycle) linear infinite;
+}
+.publication-kanban.is-playing .kanban-card-filler {
+  animation: kanban-filler-lift var(--kanban-cycle) cubic-bezier(0.2, 0, 0.2, 1)
+    infinite;
+}
+.kanban-moving-card {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: calc(25% + 2.25px);
+  z-index: 5;
+  width: calc(25% - 6.75px);
+  padding: 10px 9px;
+  color: #17243a;
+  background: #fff;
+  border: 1px solid #e2e7ef;
+  border-top: 3px solid var(--yellow);
+  border-radius: 7px;
+  box-shadow: 0 10px 24px rgba(20, 36, 61, 0.24);
+  opacity: 0;
+  pointer-events: none;
+}
+.kanban-moving-card h5 {
+  margin: 0 0 6px;
+  color: #17243a;
+  font-family: var(--heading);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.kanban-moving-card p {
+  margin: 0;
+  color: #687487;
+  font-size: 8px;
+  line-height: 1.5;
+}
+.publication-kanban.is-playing .kanban-moving-card {
+  display: block;
+  animation: kanban-card-travel var(--kanban-cycle) cubic-bezier(0.2, 0, 0.2, 1)
+    infinite;
+  will-change: opacity, transform;
+}
+.publication-kanban.is-playing .publication-preview {
+  animation: publication-preview-rise var(--kanban-cycle) ease-in-out infinite;
+  will-change: opacity, transform;
+}
+@keyframes kanban-board-cycle {
+  0%,
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  45%,
+  95% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes kanban-card-travel {
+  0%,
+  5% {
+    opacity: 0;
+    transform: translateX(0) scale(0.96);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0) scale(1.04) rotate(2deg);
+  }
+  30%,
+  42% {
+    opacity: 1;
+    transform: translateX(calc(200% + 18px)) scale(1) rotate(0);
+  }
+  50%,
+  100% {
+    opacity: 0;
+    transform: translateX(calc(200% + 18px)) scale(1);
+  }
+}
+@keyframes kanban-original-hide {
+  0%,
+  9% {
+    opacity: 1;
+  }
+  10%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes kanban-filler-lift {
+  0%,
+  15% {
+    transform: translateY(0);
+  }
+  25%,
+  45% {
+    transform: translateY(-104px);
+  }
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes publication-preview-rise {
+  0%,
+  45% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  50%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  95%,
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* O conteúdo é uma transcrição estática por padrão; JS revela cada fala no ciclo. */
+.chat-row {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  animation: none;
+}
+.chat-demo.is-playing .chat-row:not(.chat-typing) {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+}
+.chat-demo.is-playing .chat-row.is-visible:not(.chat-typing) {
+  opacity: 1;
+  visibility: visible;
+  animation: chat-message-in 0.42s ease-out both;
+}
+.chat-typing {
+  display: none;
+  opacity: 0;
+}
+.chat-demo.is-playing .chat-typing.is-visible {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  animation: chat-message-in 0.32s ease-out both;
+}
+.chat-typing-bubble {
+  display: inline-flex;
+  min-width: 53px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 11px 13px;
+  background: #fff;
+  border: 1px solid #e5eaf2;
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+}
+.chat-typing-bubble i {
+  width: 5px;
+  height: 5px;
+  background: #74839c;
+  border-radius: 50%;
+  animation: chat-dot-bounce 0.8s ease-in-out infinite;
+}
+.chat-typing-bubble i:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.chat-typing-bubble i:nth-child(3) {
+  animation-delay: 0.24s;
+}
+@keyframes chat-dot-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+.chat-composer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 13px;
+  background: #fff;
+  border-top: 1px solid #e5eaf2;
+}
+.chat-composer-field {
+  display: flex;
+  min-width: 0;
+  min-height: 36px;
+  flex: 1;
+  align-items: center;
+  padding: 0 12px;
+  color: #8390a4;
+  background: #f8f9fc;
+  border: 1px solid #dfe5ef;
+  border-radius: 20px;
+  font-size: 10px;
+}
+.chat-composer-caret {
+  width: 1px;
+  height: 14px;
+  margin-left: 4px;
+  background: var(--blue);
+  animation: chat-caret-blink 0.9s steps(2, start) infinite;
+}
+.chat-send-button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  color: var(--blue-ink);
+  background: var(--yellow);
+  border-radius: 50%;
+}
+.chat-send-button svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+@keyframes chat-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .publication-kanban .kanban-panel,
+  .publication-kanban .publication-preview,
+  .publication-kanban .kanban-card-featured,
+  .publication-kanban .kanban-card-filler,
+  .publication-kanban .kanban-progress > span,
+  .kanban-moving-card,
+  .chat-demo .chat-row,
+  .chat-composer-caret,
+  .chat-typing-bubble i {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+  .publication-kanban .kanban-moving-card,
+  .chat-demo .chat-typing {
+    display: none !important;
+  }
+  .kanban-panel,
+  .publication-preview {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .chat-demo.is-playing .chat-row:not(.chat-typing) {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+  .chat-messages {
+    scroll-behavior: auto !important;
+  }
+}
