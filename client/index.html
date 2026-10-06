@@ -50,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <script type="application/ld+json">
@@ -532,14 +532,15 @@
           rel="noopener noreferrer"
           >Vamos planejar juntos <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a
         >
-        <section class="publication-kanban" aria-labelledby="publication-title">
-          <div class="publication-heading">
-            <div>
-              <p class="publication-kicker">FLUXO EDITORIAL · KANBAN</p>
-              <h3 id="publication-title">
-                Da pauta à publicação,<br /><span>cada etapa em foco.</span>
-              </h3>
-            </div>
+        <section
+          class="publication-kanban publication-kanban-split"
+          aria-labelledby="publication-title"
+        >
+          <div class="publication-copy">
+            <p class="publication-kicker">FLUXO EDITORIAL · KANBAN</p>
+            <h3 id="publication-title">
+              Da pauta à publicação,<br /><span>cada etapa em foco.</span>
+            </h3>
             <p class="publication-intro">
               Acompanhe o avanço do conteúdo de Em Produção até Publicado, com
               uma prévia social antes de entrar no calendário editorial.
@@ -677,32 +678,7 @@
               </li>
             </ul>
           </div>
-          <div class="client-pair">
-            <div class="client-group">
-              <p class="group-label">OUTROS CLIENTES</p>
-              <div
-                class="client-wordmarks"
-                aria-label="Clientes da Led Marketing"
-              >
-                <span class="client-wordmark client-dwa"
-                  >DWA <small>Adm</small></span
-                >
-                <span class="client-wordmark client-belli">Bellistyle</span>
-                <span class="client-wordmark client-topcar">TopCar</span>
-              </div>
-            </div>
-            <div class="client-group platform-group">
-              <p class="group-label">CANAIS DE MÍDIA</p>
-              <div
-                class="platform-list"
-                aria-label="Plataformas atendidas pela Led"
-              >
-                <span>Google Ads</span><span>YouTube Ads</span
-                ><span>Meta Ads</span> <span>LinkedIn Ads</span
-                ><span>TikTok Ads</span><span>Globo Ads</span>
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -714,7 +690,7 @@
         <div class="shorts-heading">
           <div>
             <div class="section-kicker">
-              <span>05</span> Vídeos curtos · formato 9:16
+              <span>05</span> Vídeos curtos
             </div>
             <h2 id="shorts-title">
               Ideias rápidas.<br /><span>Comunicação em movimento.</span>
@@ -953,26 +929,34 @@
             </p>
           </div>
           <div class="chat-wrapper">
-            <div class="demo-frame-shell demo-frame-shell-chat">
-              <div class="demo-frame-poster">
-                <strong>LedChat</strong>
-                <span
-                  >Conversas organizadas com apoio de inteligência
-                  artificial.</span
-                >
+            <div class="ledchat-sim">
+              <div class="ledchat-sim-app" id="ledchat-app">
+                <div class="ledchat-sim-header" id="ledchat-header"></div>
+                <div class="ledchat-sim-messages" id="ledchat-messages"></div>
+                <div class="ledchat-sim-input-area">
+                  <div class="ledchat-sim-input-wrapper">
+                    <div class="ledchat-sim-fake-input" id="ledchat-input"></div>
+                    <div class="ledchat-sim-send-btn">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
+                        />
+                        <path d="m21.854 2.147-10.94 10.939" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <iframe
-                class="demo-frame demo-frame-chat"
-                id="ledchat-demo-frame"
-                data-demo-frame="chat"
-                data-demo-src="/simulacoes/simulacao-ledchat.html"
-                data-frame-width="350"
-                data-frame-height="520"
-                title="Conversa animada do LedChat em diferentes segmentos"
-                loading="eager"
-                sandbox="allow-scripts"
-                referrerpolicy="no-referrer"
-              ></iframe>
             </div>
           </div>
         </section>

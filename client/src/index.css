@@ -1842,73 +1842,11 @@ button {
 .client-group {
   min-width: 0;
 }
-.client-pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(25px, 5vw, 64px);
-}
+
 .group-label {
   margin: 0 0 19px;
   color: #748097;
   font-size: 9px;
-}
-.client-wordmarks {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-.client-wordmark {
-  display: flex;
-  min-height: 82px;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 10px;
-  color: var(--blue-ink);
-  background: #f7f8fb;
-  border: 1px solid #e6eaf1;
-  font-family: var(--heading);
-  font-size: clamp(14px, 1.7vw, 19px);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  text-align: center;
-}
-.client-dwa {
-  gap: 5px;
-  color: #0a3678;
-}
-.client-dwa small {
-  align-self: center;
-  color: #51617b;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-.client-belli {
-  font-family: Georgia, serif;
-  font-style: italic;
-  letter-spacing: -0.045em;
-}
-.client-topcar {
-  color: #08265d;
-  font-style: italic;
-  font-weight: 900;
-}
-.platform-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
-.platform-list span {
-  display: inline-flex;
-  min-height: 34px;
-  align-items: center;
-  padding: 7px 11px;
-  color: #27334a;
-  background: #f7f8fb;
-  border: 1px solid #e1e6ef;
-  font-size: 11px;
-  font-weight: 600;
 }
 
 /* Shorts oficiais em proporção vertical 9:16 */
@@ -1964,9 +1902,19 @@ button {
   line-height: 1.3;
 }
 .short-video-caption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: var(--blue);
   font-size: 11px;
   font-weight: 700;
+}
+.short-video-caption a span {
+  display: inline-flex;
+}
+.short-video-caption a svg {
+  width: 12px;
+  height: 12px;
 }
 .short-video-caption a:hover,
 .video-source-note a:hover {
@@ -2133,20 +2081,7 @@ button {
   .shorts-heading h2 {
     font-size: clamp(36px, 10vw, 48px);
   }
-  .client-wordmarks {
-    gap: 7px;
-  }
-  .client-wordmark {
-    min-height: 68px;
-    padding: 9px 5px;
-    font-size: 13px;
-  }
-  .client-dwa {
-    gap: 3px;
-  }
-  .client-dwa small {
-    font-size: 8px;
-  }
+
   .short-video {
     width: min(78vw, 275px);
   }
@@ -2408,10 +2343,6 @@ button {
   }
 }
 @media (max-width: 760px) {
-  .client-pair {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-  }
   .technology-heading {
     grid-template-columns: minmax(0, 1fr);
     gap: 20px;
@@ -2489,13 +2420,7 @@ button {
   background: rgba(2, 16, 48, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.publication-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 36px;
-  margin-bottom: 24px;
-}
+
 .publication-kicker,
 .chat-demo-kicker {
   margin: 0 0 10px;
@@ -2504,7 +2429,7 @@ button {
   font-weight: 800;
   letter-spacing: 0.14em;
 }
-.publication-heading h3,
+.publication-copy h3,
 .chat-demo-copy h3 {
   margin: 0;
   color: var(--white);
@@ -2514,7 +2439,7 @@ button {
   letter-spacing: -0.05em;
   line-height: 1.08;
 }
-.publication-heading h3 span {
+.publication-copy h3 span {
   color: var(--yellow);
 }
 .publication-intro {
@@ -2825,6 +2750,199 @@ button {
   width: 100%;
   min-width: 0;
 }
+
+/* Simulação LedChat inline (bloco HTML, sem iframe). */
+.ledchat-sim {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.ledchat-sim-app {
+  --ledchat-bg: #1a1c2a;
+  --ledchat-scroll-track: rgb(255 255 255 / 6%);
+  --ledchat-scroll-thumb: rgb(255 255 255 / 25%);
+  display: flex;
+  width: min(100%, 350px);
+  height: 520px;
+  flex-direction: column;
+  overflow: hidden;
+  color: #fff;
+  background: var(--ledchat-bg);
+  border-radius: 20px;
+  box-shadow: 0 18px 44px rgb(2 16 48 / 30%);
+  font-family: "Montserrat", sans-serif;
+  transition: background 0.3s;
+}
+.ledchat-sim-header {
+  display: flex;
+  height: 56px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.ledchat-sim-messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding: 14px;
+  scrollbar-color: var(--ledchat-scroll-thumb) var(--ledchat-scroll-track);
+  scrollbar-width: thin;
+}
+.ledchat-sim-messages::-webkit-scrollbar {
+  width: 8px;
+}
+.ledchat-sim-messages::-webkit-scrollbar-track {
+  background: var(--ledchat-scroll-track);
+}
+.ledchat-sim-messages::-webkit-scrollbar-thumb {
+  background: var(--ledchat-scroll-thumb);
+  border-radius: 10px;
+}
+.ledchat-sim-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.ledchat-sim-row-user {
+  flex-direction: row-reverse;
+}
+.ledchat-sim-avatar {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 15%);
+  border-radius: 50%;
+}
+.ledchat-sim-avatar svg {
+  width: 18px;
+  height: 18px;
+}
+.ledchat-sim-bubble {
+  max-width: 70%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  animation: ledchat-fade-up 0.25s ease;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.ledchat-sim-bubble-user {
+  margin-left: auto;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border-bottom-right-radius: 4px;
+}
+.ledchat-sim-bubble-ia {
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-bottom-left-radius: 4px;
+}
+.ledchat-sim-typing {
+  display: flex;
+  gap: 4px;
+}
+.ledchat-sim-dot {
+  width: 6px;
+  height: 6px;
+  animation: ledchat-blink 1.4s infinite both;
+  background: #fff;
+  border-radius: 50%;
+}
+.ledchat-sim-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.ledchat-sim-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.ledchat-sim-input-area {
+  padding: 8px 10px;
+  border-top: 1px solid rgb(255 255 255 / 15%);
+}
+.ledchat-sim-input-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 6px 0 14px;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 20px;
+}
+.ledchat-sim-fake-input {
+  display: flex;
+  flex: 1;
+  min-height: 38px;
+  align-items: center;
+  color: rgb(255 255 255 / 85%);
+  font-size: 14px;
+}
+.ledchat-sim-send-btn {
+  display: flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.ledchat-sim-send-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+.ledchat-sim-send-btn:hover {
+  transform: scale(1.05);
+}
+.ledchat-sim-send-btn:active {
+  transform: scale(0.95);
+}
+@keyframes ledchat-blink {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@keyframes ledchat-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ledchat-sim-bubble {
+    animation: none;
+  }
+  .ledchat-sim-dot {
+    animation: none;
+  }
+}
+
+.publication-copy {
+  min-width: 0;
+}
+.publication-kanban-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 52px);
+}
 .publication-workspace-embedded {
   display: block;
   width: 100%;
@@ -3074,16 +3192,10 @@ button {
     margin-top: 48px;
     padding: 20px 16px;
   }
-  .publication-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .publication-intro {
-    max-width: 510px;
-  }
-  .publication-workspace {
-    gap: 18px;
+  .publication-kanban-split {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 22px;
   }
   .kanban-panel {
     min-width: 680px;
@@ -3107,7 +3219,7 @@ button {
     margin-right: -2px;
     margin-left: -2px;
   }
-  .publication-heading h3 {
+  .publication-copy h3 {
     font-size: 27px;
   }
   .kanban-panel {
@@ -3442,20 +3554,20 @@ button {
     visibility: visible !important;
   }
   :root:not(.demo-motion-opt-in) .chat-messages {
-      scroll-behavior: auto !important;
-    }
+    scroll-behavior: auto !important;
   }
+}
 
-  /* Lucide icon sizing */
-  .nav-cta span svg,
-  .button span svg,
-  .text-link span svg,
-  .arrow-link span svg,
-  .footnote-mark svg,
-  .service-icon svg,
-  .contact-sun svg,
-  .intro-ribbon i svg {
-    width: 1em;
-    height: 1em;
-    display: block;
-  }
+/* Lucide icon sizing */
+.nav-cta span svg,
+.button span svg,
+.text-link span svg,
+.arrow-link span svg,
+.footnote-mark svg,
+.service-icon svg,
+.contact-sun svg,
+.intro-ribbon i svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+}
