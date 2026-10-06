@@ -1040,17 +1040,18 @@ button {
   width: 27px;
   height: 27px;
   flex: 0 0 27px;
-  content: "+";
-  color: var(--blue-ink);
-  background: var(--yellow);
-  border-radius: 50%;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2307183a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5v14'/%3E%3C/svg%3E");
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: transform 0.2s ease;
 }
 .faq-item[open] summary::after {
-  content: "−";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2307183a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
   transform: rotate(180deg);
 }
 .faq-item > p {
@@ -3441,6 +3442,20 @@ button {
     visibility: visible !important;
   }
   :root:not(.demo-motion-opt-in) .chat-messages {
-    scroll-behavior: auto !important;
+      scroll-behavior: auto !important;
+    }
   }
-}
+
+  /* Lucide icon sizing */
+  .nav-cta span svg,
+  .button span svg,
+  .text-link span svg,
+  .arrow-link span svg,
+  .footnote-mark svg,
+  .service-icon svg,
+  .contact-sun svg,
+  .intro-ribbon i svg {
+    width: 1em;
+    height: 1em;
+    display: block;
+  }
