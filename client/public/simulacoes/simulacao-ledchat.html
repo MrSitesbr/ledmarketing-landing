@@ -159,8 +159,12 @@
 .send-btn svg{
   width:18px;
   height:18px;
-  fill:#fff;
-  transform:rotate(-35deg);
+  color:#fff;
+}
+
+.avatar svg{
+  width:18px;
+  height:18px;
 }
 
 
@@ -190,9 +194,10 @@
         <div class="fake-input" id="input"></div>
 
         <div class="send-btn">
-          <!-- ÍCONE DE ENVIO -->
-          <svg viewBox="0 0 24 24">
-            <path d="M2 21l21-9L2 3v7l15 2-15 2z"/>
+          <!-- ÍCONE DE ENVIO (Lucide Send) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/>
+            <path d="m21.854 2.147-10.94 10.939"/>
           </svg>
         </div>
       </div>
@@ -207,23 +212,23 @@ const flows=[
     bg:"#1a1c2a",
     scroll:"#3b82f6",
     pairs:[
-      ["Olá, estou procurando um apartamento.","Claro 😊 Você pretende comprar ou alugar?"],
+      ["Olá, estou procurando um apartamento.","Claro! Você pretende comprar ou alugar?"],
       ["Comprar, com dois quartos.","Perfeito! Em qual região você prefere?"],
-      ["Perto da praia.","Ótima escolha 🌊 Qual faixa de valor?"],
+      ["Perto da praia.","Ótima escolha! Qual faixa de valor?"],
       ["Até 450 mil.","Tenho ótimas opções dentro desse perfil."]
     ],
-    cta:"Posso te enviar algumas opções 🏠"
+    cta:"Posso te enviar algumas opções."
   },
   {
     title:"Assistente p/ Estética",
     bg:"#5e1ab5",
     scroll:"#c084fc",
     pairs:[
-      ["Oi, queria cuidar melhor da minha pele.","Que ótimo 😊 Você já faz algum tratamento?"],
+      ["Oi, queria cuidar melhor da minha pele.","Que ótimo! Você já faz algum tratamento?"],
       ["Nunca fiz.","Podemos começar com uma limpeza de pele profunda."],
       ["Ajuda mesmo?","Sim! Melhora textura, viço e saúde da pele."]
     ],
-    cta:"Posso agendar sua avaliação ✨"
+    cta:"Posso agendar sua avaliação."
   },
   {
     title:"Assistente p/ Advocacia",
@@ -234,11 +239,14 @@ const flows=[
       ["Trabalhista.","É sobre rescisão ou direitos não pagos?"],
       ["Sim.","Podemos analisar seu caso com calma."]
     ],
-    cta:"Posso agendar uma consulta ⚖️"
+    cta:"Posso agendar uma consulta."
   }
 ];
 
 let flow=0, step=0;
+
+const ICON_USER='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+const ICON_BOT='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>';
 
 const chat=document.getElementById("chat");
 const header=document.getElementById("header");
@@ -257,7 +265,7 @@ function row(from,text){
   r.className="row";
   if(from==="user") r.style.flexDirection="row-reverse";
   r.innerHTML=`
-    <div class="avatar">${from==="user"?"🙂":"🤖"}</div>
+    <div class="avatar">${from==="user"?ICON_USER:ICON_BOT}</div>
     <div class="bubble ${from}">${text}</div>
   `;
   messages.appendChild(r);
@@ -268,7 +276,7 @@ function typingIA(){
   const r=document.createElement("div");
   r.className="row";
   r.innerHTML=`
-    <div class="avatar">🤖</div>
+    <div class="avatar">${ICON_BOT}</div>
     <div class="bubble ia typing">
       <div class="dot"></div><div class="dot"></div><div class="dot"></div>
     </div>

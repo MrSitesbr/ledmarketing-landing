@@ -145,9 +145,12 @@ body {
 }
 
 .insta-content { padding: 12px; }
-.insta-icons { display: flex; gap: 12px; margin-bottom: 8px; font-size: 18px; }
+.insta-icons { display: flex; gap: 12px; margin-bottom: 8px; color: #262626; }
+.insta-icons svg { width: 18px; height: 18px; }
 .insta-caption { font-size: 11px; line-height: 1.4; color: #262626; }
 .insta-caption b { font-weight: 600; }
+.insta-check { display: inline-flex; align-items: center; gap: 4px; }
+.insta-check svg { width: 11px; height: 11px; }
 
 /* --- KEYFRAMES MESTRE --- */
 
@@ -227,14 +230,18 @@ body {
     <div class="insta-photo" style="background-image:url('https://image.pollinations.ai/prompt/luxury%20modern%20mansion%20facade%20high%20end?width=350&height=240&nologo=true&seed=42')"></div>
     
     <div class="insta-content">
-      <div class="insta-icons">❤️ 💬 ✈️</div>
-      <div class="insta-caption">
-        <b>imobiliaria_premium</b> Oportunidade única no Canto do Forte! 💎 Esta mansão redefine o conceito de luxo e sofisticação. <br><br>
-        ✅ 5 Suítes<br>
-        ✅ Espaço Gourmet<br>
-        ✅ Vista Panorâmica<br><br>
-        #luxo #imoveis #cantodoforte #realestate
+      <div class="insta-icons">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
       </div>
+      <div class="insta-caption">
+              <b>imobiliaria_premium</b> Oportunidade única no Canto do Forte! Esta mansão redefine o conceito de luxo e sofisticação. <br><br>
+              <span class="insta-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg> 5 Suítes</span><br>
+              <span class="insta-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg> Espaço Gourmet</span><br>
+              <span class="insta-check"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg> Vista Panorâmica</span><br><br>
+              #luxo #imoveis #cantodoforte #realestate
+            </div>
     </div>
   </div>
 
