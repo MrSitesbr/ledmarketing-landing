@@ -78,7 +78,6 @@ const demoFrames = Array.from(
   )
 );
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let manualMotionOptIns = new WeakSet<HTMLIFrameElement>();
 
 function getFrameShell(frame: HTMLIFrameElement): HTMLElement | null {
   return frame.closest<HTMLElement>(".demo-frame-shell");
@@ -102,9 +101,9 @@ function resizeDemoFrames() {
   });
 }
 
-function startDemo(frame: HTMLIFrameElement, restart = false) {
+function startDemo(frame: HTMLIFrameElement) {
   const source = frame.dataset.demoSrc;
-  if (!source || (!restart && frame.dataset.playing === "true")) return;
+  if (!source || frame.dataset.playing === "true") return;
 
   getFrameShell(frame)?.classList.remove("is-loaded");
   frame.dataset.playing = "true";
@@ -127,73 +126,15 @@ demoFrames.forEach(frame => {
   });
 });
 
-function replayFrameFor(button: HTMLButtonElement) {
-  const kind = button.dataset.demoReplay;
-  const frame = demoFrames.find(
-    candidate => candidate.dataset.demoFrame === kind
-  );
-  if (!frame) return;
-
-  manualMotionOptIns.add(frame);
-  frame.scrollIntoView({
-    behavior: reducedMotion.matches ? "auto" : "smooth",
-    block: "center",
-  });
-  const bounds = frame.getBoundingClientRect();
-  const isVisible =
-    bounds.width > 0 &&
-    bounds.height > 0 &&
-    bounds.top < window.innerHeight &&
-    bounds.bottom > 0 &&
-    bounds.left < window.innerWidth &&
-    bounds.right > 0;
-
-  if ("IntersectionObserver" in window && !isVisible) {
-    stopDemo(frame);
+function syncDemoPlayback() {
+  resizeDemoFrames();
+  if (reducedMotion.matches) {
+    demoFrames.forEach(stopDemo);
     return;
   }
-  startDemo(frame, true);
+  demoFrames.forEach(startDemo);
 }
 
-document
-  .querySelectorAll<HTMLButtonElement>("[data-demo-replay]")
-  .forEach(button => {
-    button.addEventListener("click", () => replayFrameFor(button));
-  });
-
-resizeDemoFrames();
+syncDemoPlayback();
 window.addEventListener("resize", resizeDemoFrames, { passive: true });
-
-if ("IntersectionObserver" in window) {
-  const visibilityObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        const frame = entry.target as HTMLIFrameElement;
-        if (entry.isIntersecting) {
-          if (!reducedMotion.matches || manualMotionOptIns.has(frame)) {
-            startDemo(frame);
-          }
-        } else {
-          stopDemo(frame);
-        }
-      });
-    },
-    { threshold: 0.05, rootMargin: "0px 0px 72px 0px" }
-  );
-
-  const observeFrames = () => {
-    visibilityObserver.disconnect();
-    demoFrames.forEach(frame => visibilityObserver.observe(frame));
-  };
-
-  observeFrames();
-  reducedMotion.addEventListener("change", () => {
-    if (reducedMotion.matches) {
-      manualMotionOptIns = new WeakSet<HTMLIFrameElement>();
-      demoFrames.forEach(stopDemo);
-    }
-    observeFrames();
-  });
-} else if (!reducedMotion.matches) {
-  demoFrames.forEach(frame => startDemo(frame));
-}
+reducedMotion.addEventListener("change", syncDemoPlayback);

@@ -22,7 +22,7 @@ Incluir no banner hero um formulário acessível e responsivo com nome, empresa 
 
 ## [x] Seção de clientes e parceiros, sem depoimentos
 
-Substituir a área de depoimentos por uma seção visual intitulada “Clientes e parceiros”. Mostrar DWA Adm, Bellistyle e TopCar como clientes citados no site atual da Led, e apresentar em bloco separado as plataformas de mídia que a Led atende. Não criar textos de depoimentos, nomes/logos de parceiros formais, certificações ou vínculos não verificados.
+Substituir a área de depoimentos por uma seção visual intitulada “Clientes e parceiros”. Mostrar DWA Adm, Bellistyle e TopCar junto das demais marcas atendidas, sem referências ao site anterior/novo, à origem dos logos ou a versões do site. Apresentar em bloco separado as plataformas de mídia que a Led atende. Não criar textos de depoimentos, nomes/logos de parceiros formais, certificações ou vínculos não verificados.
 
 ## [x] Seção de Shorts verticais e vídeo amplo
 
@@ -38,7 +38,7 @@ Configurar o repositório para executar `pnpm build:static` e publicar apenas `d
 
 ## [x] Atualizar a identidade visual para LEDM 2026 e refinar a prova de marcas
 
-Revisitar o layout à luz de `contactsdr.com.br`, aproveitando a hierarquia direta do hero, CTA destacado, prova visual por marcas e FAQ expansível sem copiar identidade, paleta ou textos da referência. Trocar o logo antigo da Led Marketing pelo logo LEDM 2026 e atualizar o favicon do site e o logo de metadados do projeto. Manter azul/amarelo LEDM. Na seção “Clientes e parceiros”, manter os três clientes publicados no site anterior (DWA Adm, Bellistyle e TopCar) e acrescentar um grid responsivo dos oito logos publicados no carrossel de `ledm.com.br` (CSF, Energimais, Construtora Terrace, RV Emergências, Vatten Pharma, Avoid Germs, Clínica Diuro e GoldLife), com textos alternativos; separar as plataformas de mídia e não inventar parceiros formais.
+Revisitar o layout à luz de `contactsdr.com.br`, aproveitando a hierarquia direta do hero, CTA destacado, prova visual por marcas e FAQ expansível sem copiar identidade, paleta ou textos da referência. Trocar o logo antigo da Led Marketing pelo logo LEDM 2026 e atualizar o favicon do site e o logo de metadados do projeto. Manter azul/amarelo LEDM. Na seção “Clientes e parceiros”, mostrar DWA Adm, Bellistyle e TopCar junto do grid responsivo de oito logos (CSF, Energimais, Construtora Terrace, RV Emergências, Vatten Pharma, Avoid Germs, Clínica Diuro e GoldLife), com textos alternativos; separar as plataformas de mídia, não inventar parceiros formais e não expor ao visitante a origem dos logos nem referências a site antigo/novo.
 
 ## [x] Adicionar a nova seção LEDM de tecnologia e um gráfico animado acessível
 
@@ -46,12 +46,12 @@ Criar uma seção curta que apresente, com descrições fiéis ao site LEDM, LED
 
 ## [x] Simulação visual de atendimento para o LedChat
 
-Usar como está o arquivo `simulacao-ledchat.html` incluído no ZIP enviado pelo usuário, preservando seu HTML/CSS/JS original e embutindo-o em iframe isolado com `sandbox="allow-scripts"`. A simulação contém fluxos demonstrativos para imóveis, estética e advocacia, indicador de digitação e entrada simulada de texto; identificá-la visivelmente como interface demonstrativa, não atendimento ao vivo. O mock não pode transmitir mensagens, conectar serviço real, coletar nem armazenar dados. Incluir controle acessível de reprodução/reinício; com `prefers-reduced-motion`, não carregar a simulação automaticamente, permitindo que a pessoa opte por reproduzi-la pelo botão.
+Usar como está o arquivo `simulacao-ledchat.html` incluído no ZIP enviado pelo usuário, preservando seu HTML/CSS/JS original e embutindo-o em iframe isolado com `sandbox="allow-scripts"`. Iniciar a animação automaticamente no carregamento da página; preservar os fluxos para imóveis, estética e advocacia, o indicador de digitação e a entrada simulada de texto. O mock não pode transmitir mensagens, conectar serviço real, coletar nem armazenar dados. Não adicionar botão de reprodução. Com `prefers-reduced-motion`, manter o iframe descarregado e exibir um estado estático legível.
 
 ## [x] Seção do fluxo Kanban para produção e publicação
 
-Usar como está o arquivo `simulacao-producao.html` incluído no ZIP enviado pelo usuário, preservando seu HTML/CSS/JS original e embutindo-o em iframe isolado com `sandbox="allow-scripts"`. Manter o ciclo de 12 segundos: cartão que percorre Em Produção → Publicado, cartão de apoio que sobe, quadro Trello que desaparece e prévia Instagram que sobe e sai. Identificar visivelmente que o conteúdo imobiliário é demonstrativo, não cliente ou campanha real. Incluir controle acessível de reprodução/reinício; com `prefers-reduced-motion`, não carregar o documento automaticamente, permitindo reprodução após escolha explícita. Manter contêiner responsivo e pergunta/resposta correspondente na FAQ visível e no JSON-LD `FAQPage`.
+Usar como está o arquivo `simulacao-producao.html` incluído no ZIP enviado pelo usuário, preservando seu HTML/CSS/JS original e embutindo-o em iframe isolado com `sandbox="allow-scripts"`. Iniciar automaticamente no carregamento da página e manter o ciclo de 12 segundos: cartão que percorre Em Produção → Publicado, cartão de apoio que sobe, quadro Trello que desaparece e prévia Instagram que sobe e sai. Usar uma identificação curta e profissional de fluxo ilustrativo, sem rótulos que mencionem cliente ou campanha real. Não adicionar botão de reprodução. Com `prefers-reduced-motion`, manter o documento descarregado e um estado estático legível. Manter contêiner responsivo e pergunta/resposta correspondente na FAQ visível e no JSON-LD `FAQPage`.
 
 ## [x] Reproduzir o comportamento animado das demonstrações enviadas
 
-Carregar os dois HTMLs originais do ZIP quando suas seções entrarem na viewport e descarregá-los ao sair, para reiniciar a animação na volta. Manter no Kanban o ciclo fornecido de 12 segundos; no LedChat, preservar a ordem, o typing e a troca de fluxos fornecidos. As demonstrações não podem ser chat/produção reais nem transmitir dados. Com `prefers-reduced-motion`, manter os iframes descarregados por padrão e expor botões acessíveis para opt-in explícito de reprodução/reinício.
+Carregar os dois HTMLs originais do ZIP automaticamente assim que a página terminar de carregar, sem aguardar a rolagem, e deixá-los repetir seus ciclos. Manter no Kanban o ciclo fornecido de 12 segundos; no LedChat, preservar a ordem, o typing e a troca de fluxos fornecidos. As demonstrações não podem conectar atendimento ou produção reais nem transmitir dados. Não exibir botões de reprodução. Com `prefers-reduced-motion`, manter os iframes descarregados por padrão e mostrar um estado estático legível.

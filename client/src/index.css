@@ -2516,46 +2516,6 @@ button {
 .publication-heading h3 span {
   color: var(--yellow);
 }
-.demo-replay-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-  padding: 10px 14px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font-family: var(--body);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    transform 0.18s ease,
-    background-color 0.18s ease,
-    color 0.18s ease;
-}
-.demo-replay-button > span {
-  font-size: 9px;
-}
-.demo-replay-button-dark {
-  color: var(--yellow);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.48);
-}
-.demo-replay-button-light {
-  color: var(--blue-ink);
-  background: var(--yellow);
-  border-color: var(--yellow);
-}
-.demo-replay-button:hover {
-  transform: translateY(-2px);
-}
-.demo-replay-button:focus-visible {
-  outline: 3px solid var(--yellow);
-  outline-offset: 3px;
-}
 .publication-intro {
   max-width: 360px;
   margin: 0 0 3px;
