@@ -183,7 +183,7 @@
             "name": "Como a Led organiza o fluxo de conteúdo e publicações?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Nesta página, o quadro Kanban mostra um fluxo ilustrativo de pauta, produção, revisão e publicação. Ele ajuda a visualizar as etapas de uma rotina editorial; o exemplo não é um quadro conectado a uma ferramenta nem uma campanha real."
+              "text": "A simulação animada mostra um cartão passando de Em Produção a Publicado e, depois, uma prévia para redes sociais. É um exemplo visual, não um quadro conectado a uma ferramenta nem uma campanha real."
             }
           }
         ]
@@ -539,177 +539,47 @@
               <h3 id="publication-title">
                 Da pauta à publicação,<br /><span>cada etapa em foco.</span>
               </h3>
+              <button
+                class="demo-replay-button demo-replay-button-dark"
+                type="button"
+                data-demo-replay="kanban"
+                aria-controls="kanban-demo-frame"
+              >
+                <span aria-hidden="true">▶</span> Reproduzir ciclo de 12 s
+              </button>
             </div>
             <p class="publication-intro">
-              Ideias, produção, revisão e publicação em um fluxo que deixa o
-              trabalho visível.
+              Um cartão passa de Em Produção a Publicado; em seguida, a prévia
+              social ocupa a tela, exatamente como na animação enviada.
               <span class="publication-note">
-                Exemplo ilustrativo de conteúdo imobiliário; não representa um
-                cliente ou campanha real da Led.
+                Exemplo visual imobiliário; não representa cliente ou campanha
+                real da Led.
               </span>
             </p>
           </div>
-          <div class="publication-workspace">
-            <div
-              class="kanban-scroll"
-              role="region"
-              aria-label="Quadro Kanban demonstrativo; mova horizontalmente para consultar as quatro etapas."
-              tabindex="0"
-            >
-              <div class="kanban-panel">
-                <div class="kanban-toolbar">
-                  <strong>Calendário de conteúdo</strong>
-                  <span>DEMONSTRAÇÃO · 4 ETAPAS</span>
-                </div>
-                <div class="kanban-progress" aria-hidden="true">
-                  <span></span>
-                </div>
-                <div class="kanban-columns">
-                  <div class="kanban-column">
-                    <div class="kanban-column-heading">
-                      <h4>Pauta</h4>
-                      <span>01</span>
-                    </div>
-                    <article class="kanban-card">
-                      <span class="kanban-card-tag">IDEIA · REELS</span>
-                      <h5>Tour virtual: Canto do Forte</h5>
-                      <p>Definir o ângulo e a história do conteúdo.</p>
-                    </article>
-                  </div>
-                  <div class="kanban-column">
-                    <div class="kanban-column-heading">
-                      <h4>Em produção</h4>
-                      <span>02</span>
-                    </div>
-                    <article class="kanban-card kanban-card-featured">
-                      <span class="kanban-card-tag">INSTAGRAM</span>
-                      <h5>Mansão no Canto do Forte</h5>
-                      <p>Roteiro e peças em desenvolvimento.</p>
-                    </article>
-                    <article
-                      class="kanban-card kanban-card-filler"
-                      aria-hidden="true"
-                    >
-                      <span class="kanban-card-tag">CONTEÚDO · SOCIAL</span>
-                      <h5>Ajustes finais</h5>
-                      <p>Texto revisado para o calendário.</p>
-                    </article>
-                  </div>
-                  <div class="kanban-column">
-                    <div class="kanban-column-heading">
-                      <h4>Revisão</h4>
-                      <span>03</span>
-                    </div>
-                    <article class="kanban-card">
-                      <span class="kanban-card-tag">CONTEÚDO</span>
-                      <h5>Legenda e chamada</h5>
-                      <p>Ajustar a mensagem ao formato escolhido.</p>
-                    </article>
-                  </div>
-                  <div class="kanban-column">
-                    <div class="kanban-column-heading">
-                      <h4>Publicado</h4>
-                      <span>04</span>
-                    </div>
-                    <article class="kanban-card">
-                      <span class="kanban-card-tag">FACEBOOK</span>
-                      <h5>Garden Village</h5>
-                      <p>Peça demonstrativa já no calendário.</p>
-                    </article>
-                  </div>
-                  <article class="kanban-moving-card" aria-hidden="true">
-                    <span class="kanban-card-tag">INSTAGRAM</span>
-                    <h5>Mansão no Canto do Forte</h5>
-                    <p>Roteiro e peças em desenvolvimento.</p>
-                  </article>
-                </div>
-              </div>
-            </div>
-            <article
-              class="publication-preview"
-              aria-label="Prévia ilustrativa de uma publicação social"
-            >
-              <div class="publication-preview-header">
-                <span class="publication-avatar" aria-hidden="true">LE</span>
-                <div>
-                  <strong>imobiliaria_premium</strong>
-                  <span>Perfil de demonstração</span>
-                </div>
-                <span class="publication-menu" aria-hidden="true">•••</span>
-              </div>
-              <div class="publication-art" aria-hidden="true">
-                <svg viewBox="0 0 360 270" focusable="false">
-                  <defs>
-                    <linearGradient
-                      id="property-sky"
-                      x1="0"
-                      y1="0"
-                      x2="1"
-                      y2="1"
-                    >
-                      <stop offset="0" stop-color="#e8f1ff" />
-                      <stop offset="1" stop-color="#ffe789" />
-                    </linearGradient>
-                  </defs>
-                  <rect width="360" height="270" fill="url(#property-sky)" />
-                  <circle cx="291" cy="58" r="27" fill="#ffd927" />
-                  <path
-                    d="M0 204 78 151l47 34 69-66 66 59 52-32 48 40v84H0z"
-                    fill="#95b9d9"
-                  />
-                  <path d="m71 135 99-57 107 58v134H71z" fill="#f8fbff" />
-                  <path
-                    d="m58 139 112-75 123 75-10 15-113-68-103 68z"
-                    fill="#003399"
-                  />
-                  <rect
-                    x="97"
-                    y="155"
-                    width="34"
-                    height="44"
-                    rx="3"
-                    fill="#b9d4eb"
-                  />
-                  <rect
-                    x="148"
-                    y="155"
-                    width="34"
-                    height="44"
-                    rx="3"
-                    fill="#b9d4eb"
-                  />
-                  <rect
-                    x="199"
-                    y="155"
-                    width="34"
-                    height="44"
-                    rx="3"
-                    fill="#b9d4eb"
-                  />
-                  <rect x="145" y="213" width="51" height="56" fill="#ffd927" />
-                  <path
-                    d="M0 232q70-22 138 0t222 0v38H0z"
-                    fill="#003399"
-                    opacity=".92"
-                  />
-                </svg>
-                <span class="publication-art-label"
-                  >UM NOVO OLHAR<br />PARA CADA ESPAÇO</span
+          <div class="publication-workspace publication-workspace-embedded">
+            <div class="demo-frame-shell demo-frame-shell-production">
+              <div class="demo-frame-poster">
+                <strong>Fluxo editorial animado</strong>
+                <span
+                  >Use “Reproduzir ciclo de 12 s” para assistir à
+                  simulação.</span
                 >
               </div>
-              <div class="publication-preview-body">
-                <div class="publication-actions" aria-hidden="true">
-                  <span>♡</span><span>◯</span><span>↗</span>
-                </div>
-                <p>
-                  <strong>imobiliaria_premium</strong> Uma ideia de tour virtual
-                  para apresentar cada detalhe do imóvel.
-                </p>
-                <span class="publication-caption-note">
-                  Exemplo visual · não é um anúncio publicado
-                </span>
-              </div>
-            </article>
+              <iframe
+                class="demo-frame demo-frame-production"
+                id="kanban-demo-frame"
+                data-demo-frame="kanban"
+                data-demo-src="/simulacoes/simulacao-producao.html"
+                data-frame-width="720"
+                data-frame-content-width="420"
+                data-frame-height="550"
+                title="Simulação animada de produção e publicação de conteúdo"
+                loading="lazy"
+                sandbox="allow-scripts"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
           </div>
         </section>
       </section>
@@ -1094,124 +964,44 @@
               Uma conversa pode começar com uma boa pergunta.
             </h3>
             <p>
-              Exemplo visual de como um atendimento digital pode entender a
-              necessidade de quem visita um site e conduzir a conversa com
-              clareza.
+              A demonstração alterna entre fluxos de imóveis, estética e
+              advocacia, com digitação e mensagens simuladas.
             </p>
             <p class="chat-demo-note">
-              Demonstração ilustrativa em contexto imobiliário. Não é um chat ao
-              vivo e não representa conversa com um cliente real.
+              Exemplo visual, não atendimento ao vivo nem conversa com um
+              cliente real; nenhum dado ou mensagem é transmitido.
             </p>
+            <button
+              class="demo-replay-button demo-replay-button-light"
+              type="button"
+              data-demo-replay="chat"
+              aria-controls="ledchat-demo-frame"
+            >
+              <span aria-hidden="true">▶</span> Reproduzir conversa
+            </button>
           </div>
           <div class="chat-wrapper">
-            <article
-              class="chat-app"
-              aria-label="Simulação visual de atendimento, sem conexão a serviço real"
-            >
-              <header class="chat-header">
-                <span class="chat-brand-mark" aria-hidden="true">LE</span>
-                <span class="chat-header-copy">
-                  <strong>LedChat</strong>
-                  <small>Conversa demonstrativa</small>
-                </span>
-                <span class="chat-status"
-                  ><i aria-hidden="true"></i> Simulação</span
+            <div class="demo-frame-shell demo-frame-shell-chat">
+              <div class="demo-frame-poster">
+                <strong>Simulação do LedChat</strong>
+                <span
+                  >Use “Reproduzir conversa” para iniciar os fluxos
+                  animados.</span
                 >
-              </header>
-              <ol
-                class="chat-messages"
-                aria-label="Mensagens da conversa simulada"
-              >
-                <li class="chat-row chat-row-user">
-                  <span class="chat-avatar" aria-hidden="true">🙂</span>
-                  <p class="chat-bubble chat-bubble-user">
-                    <span class="chat-sr-only">Visitante: </span>Olá, estou
-                    procurando um apartamento.
-                  </p>
-                </li>
-                <li
-                  class="chat-row chat-row-assistant chat-typing"
-                  aria-hidden="true"
-                >
-                  <span class="chat-avatar chat-avatar-assistant">🤖</span>
-                  <span class="chat-typing-bubble"><i></i><i></i><i></i></span>
-                </li>
-                <li class="chat-row chat-row-assistant">
-                  <span
-                    class="chat-avatar chat-avatar-assistant"
-                    aria-hidden="true"
-                    >🤖</span
-                  >
-                  <p class="chat-bubble chat-bubble-assistant">
-                    <span class="chat-sr-only">LedChat: </span>Claro 😊 Você
-                    pretende comprar ou alugar?
-                  </p>
-                </li>
-                <li class="chat-row chat-row-user">
-                  <span class="chat-avatar" aria-hidden="true">🙂</span>
-                  <p class="chat-bubble chat-bubble-user">
-                    <span class="chat-sr-only">Visitante: </span>Comprar, com
-                    dois quartos.
-                  </p>
-                </li>
-                <li
-                  class="chat-row chat-row-assistant chat-typing"
-                  aria-hidden="true"
-                >
-                  <span class="chat-avatar chat-avatar-assistant">🤖</span>
-                  <span class="chat-typing-bubble"><i></i><i></i><i></i></span>
-                </li>
-                <li class="chat-row chat-row-assistant">
-                  <span
-                    class="chat-avatar chat-avatar-assistant"
-                    aria-hidden="true"
-                    >🤖</span
-                  >
-                  <p class="chat-bubble chat-bubble-assistant">
-                    <span class="chat-sr-only">LedChat: </span>Perfeito! Em qual
-                    região você prefere?
-                  </p>
-                </li>
-                <li class="chat-row chat-row-user">
-                  <span class="chat-avatar" aria-hidden="true">🙂</span>
-                  <p class="chat-bubble chat-bubble-user">
-                    <span class="chat-sr-only">Visitante: </span>Perto da praia.
-                  </p>
-                </li>
-                <li
-                  class="chat-row chat-row-assistant chat-typing"
-                  aria-hidden="true"
-                >
-                  <span class="chat-avatar chat-avatar-assistant">🤖</span>
-                  <span class="chat-typing-bubble"><i></i><i></i><i></i></span>
-                </li>
-                <li class="chat-row chat-row-assistant">
-                  <span
-                    class="chat-avatar chat-avatar-assistant"
-                    aria-hidden="true"
-                    >🤖</span
-                  >
-                  <p class="chat-bubble chat-bubble-assistant">
-                    <span class="chat-sr-only">LedChat: </span>Ótima escolha 🌊
-                    Qual faixa de valor?
-                  </p>
-                </li>
-              </ol>
-              <div class="chat-composer" aria-hidden="true">
-                <span class="chat-composer-field">
-                  <span>Escreva uma mensagem...</span>
-                  <i class="chat-composer-caret"></i>
-                </span>
-                <span class="chat-send-button">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M2 21l21-9L2 3v7l15 2-15 2z"></path>
-                  </svg>
-                </span>
               </div>
-              <p class="chat-footer-note">
-                Simulação visual: o campo não recebe nem envia mensagens.
-              </p>
-            </article>
+              <iframe
+                class="demo-frame demo-frame-chat"
+                id="ledchat-demo-frame"
+                data-demo-frame="chat"
+                data-demo-src="/simulacoes/simulacao-ledchat.html"
+                data-frame-width="350"
+                data-frame-height="520"
+                title="Simulação animada do LedChat com fluxos para imóveis, estética e advocacia"
+                loading="lazy"
+                sandbox="allow-scripts"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
           </div>
         </section>
         <div class="technology-journey">
@@ -1484,10 +1274,10 @@
               ></span>
             </summary>
             <p>
-              Nesta página, o quadro Kanban mostra um fluxo ilustrativo de
-              pauta, produção, revisão e publicação. Ele ajuda a visualizar as
-              etapas de uma rotina editorial; o exemplo não é um quadro
-              conectado a uma ferramenta nem uma campanha real.
+              A simulação animada mostra um cartão passando de Em Produção a
+              Publicado e, depois, uma prévia para redes sociais. É um exemplo
+              visual, não um quadro conectado a uma ferramenta nem uma campanha
+              real.
             </p>
           </details>
         </div>

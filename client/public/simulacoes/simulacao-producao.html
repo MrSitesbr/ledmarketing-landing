@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demonstração animada de fluxo editorial</title>
+</head>
+<body>
+<!-- CÓDIGO ORIGINAL ENVIADO PELO USUÁRIO: INÍCIO -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --trello-bg: #2c3e50;
+  --column-bg: #ebecf0;
+  --card-bg: #ffffff;
+  --text-main: #172b4d;
+  --tag-gold: #b8860b;
+  --column-w: 190px;
+  --insta-bg: #ffffff;
+  --total-time: 12s; /* Ciclo total da animação */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f4f5f7;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+.main-container {
+  width: 100%;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* --- CENÁRIO 1: TRELLO --- */
+.trello-stage {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  background: var(--trello-bg);
+  border-radius: 8px;
+  width: 420px;
+  height: 400px;
+  animation: fadeOutTrello var(--total-time) infinite;
+}
+
+.column {
+  width: var(--column-w);
+  background: var(--column-bg);
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.column-header {
+  font-weight: 600;
+  font-size: 10px;
+  color: #5e6c84;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+.card-cover {
+  width: 100%;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-body { padding: 10px; }
+.tag {
+  display: inline-block;
+  padding: 2px 6px;
+  background: var(--tag-gold);
+  color: #fff;
+  font-size: 8px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.card-title { font-size: 10px; color: var(--text-main); font-weight: 600; line-height: 1.2; }
+
+/* Animações Trello */
+#moving-card {
+  position: absolute;
+  top: 52px;
+  left: 23px;
+  width: 169px;
+  z-index: 10;
+  animation: travelCard var(--total-time) infinite cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+#card-filler { animation: slideUpFiller var(--total-time) infinite cubic-bezier(0.2, 0, 0.2, 1); }
+#original-card { animation: hideOrig var(--total-time) infinite; }
+
+/* --- CENÁRIO 2: INSTAGRAM --- */
+.instagram-stage {
+  position: absolute;
+  width: 300px;
+  height: 500px;
+  background: white;
+  border-radius: 30px;
+  border: 8px solid #222;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideUpInsta var(--total-time) infinite;
+}
+
+.insta-header {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #efefef;
+}
+
+.insta-avatar { width: 30px; height: 30px; border-radius: 50%; background: #ddd; }
+.insta-username { font-size: 12px; font-weight: 600; }
+
+.insta-photo {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.insta-content { padding: 12px; }
+.insta-icons { display: flex; gap: 12px; margin-bottom: 8px; font-size: 18px; }
+.insta-caption { font-size: 11px; line-height: 1.4; color: #262626; }
+.insta-caption b { font-weight: 600; }
+
+/* --- KEYFRAMES MESTRE --- */
+
+@keyframes fadeOutTrello {
+  0%, 40% { opacity: 1; transform: scale(1); }
+  45%, 95% { opacity: 0; transform: scale(0.9); pointer-events: none; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUpInsta {
+  0%, 45% { opacity: 0; transform: translateY(100%); }
+  50%, 90% { opacity: 1; transform: translateY(0); }
+  95%, 100% { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes travelCard {
+  0%, 5% { opacity: 0; transform: translateX(0); }
+  10% { opacity: 1; transform: translateX(0) scale(1.05) rotate(2deg); }
+  30%, 45% { opacity: 1; transform: translateX(205px) scale(1) rotate(0deg); }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes slideUpFiller {
+  0%, 15% { transform: translateY(0); }
+  25%, 45% { transform: translateY(-165px); }
+  50%, 100% { transform: translateY(0); }
+}
+
+@keyframes hideOrig {
+  0%, 9% { opacity: 1; }
+  10%, 100% { opacity: 0; }
+}
+</style>
+
+<div class="main-container">
+  
+  <div class="trello-stage">
+    <div class="column">
+      <div class="column-header">Em Produção</div>
+      
+      <div id="original-card" class="card">
+        <div class="card-cover" style="background-image:url('https://image.pollinations.ai/prompt/luxury%20modern%20mansion%20facade%20high%20end?width=350&height=240&nologo=true&seed=42')"></div>
+        <div class="card-body">
+          <div class="tag">INSTAGRAM</div>
+          <span class="card-title">Tour Virtual: Mansão no Canto do Forte</span>
+        </div>
+      </div>
+
+      <div id="card-filler" class="card">
+        <div class="card-cover" style="background-image:url('https://image.pollinations.ai/prompt/modern%20apartment%20balcony%20view?width=350&height=240&nologo=true&seed=15')"></div>
+        <div class="card-body">
+          <div class="tag" style="background:#2980b9;">FACEBOOK</div>
+          <span class="card-title">Lançamento Garden Village</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="column-header">Publicado</div>
+    </div>
+
+    <div id="moving-card" class="card">
+      <div class="card-cover" style="background-image:url('https://image.pollinations.ai/prompt/luxury%20modern%20mansion%20facade%20high%20end?width=350&height=240&nologo=true&seed=42')"></div>
+      <div class="card-body">
+        <div class="tag">INSTAGRAM</div>
+        <span class="card-title">Tour Virtual: Mansão no Canto do Forte</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="instagram-stage">
+    <div class="insta-header">
+      <img class="insta-avatar" src="https://i.pravatar.cc/100?u=imobiliaria">
+      <div class="insta-username">imobiliaria_premium</div>
+    </div>
+    
+    <div class="insta-photo" style="background-image:url('https://image.pollinations.ai/prompt/luxury%20modern%20mansion%20facade%20high%20end?width=350&height=240&nologo=true&seed=42')"></div>
+    
+    <div class="insta-content">
+      <div class="insta-icons">❤️ 💬 ✈️</div>
+      <div class="insta-caption">
+        <b>imobiliaria_premium</b> Oportunidade única no Canto do Forte! 💎 Esta mansão redefine o conceito de luxo e sofisticação. <br><br>
+        ✅ 5 Suítes<br>
+        ✅ Espaço Gourmet<br>
+        ✅ Vista Panorâmica<br><br>
+        #luxo #imoveis #cantodoforte #realestate
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Script apenas para manter o sincronismo de imagens se necessário, 
+  // mas o CSS cuida de toda a transição de estágios.
+</script>
+<!-- CÓDIGO ORIGINAL ENVIADO PELO USUÁRIO: FIM -->
+</body>
+</html>

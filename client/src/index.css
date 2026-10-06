@@ -1670,10 +1670,12 @@ button {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  html:not(.demo-motion-opt-in) {
     scroll-behavior: auto !important;
+  }
+  html:not(.demo-motion-opt-in) *,
+  html:not(.demo-motion-opt-in) *::before,
+  html:not(.demo-motion-opt-in) *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -2514,6 +2516,46 @@ button {
 .publication-heading h3 span {
   color: var(--yellow);
 }
+.demo-replay-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+.demo-replay-button > span {
+  font-size: 9px;
+}
+.demo-replay-button-dark {
+  color: var(--yellow);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.48);
+}
+.demo-replay-button-light {
+  color: var(--blue-ink);
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+.demo-replay-button:hover {
+  transform: translateY(-2px);
+}
+.demo-replay-button:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
 .publication-intro {
   max-width: 360px;
   margin: 0 0 3px;
@@ -2822,6 +2864,75 @@ button {
   width: 100%;
   min-width: 0;
 }
+.publication-workspace-embedded {
+  display: block;
+  width: 100%;
+}
+.demo-frame-shell {
+  position: relative;
+  width: 100%;
+  min-height: 550px;
+  overflow: hidden;
+  background: #f4f5f7;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+}
+.demo-frame-shell-chat {
+  width: min(100%, 390px);
+  min-height: 520px;
+  margin-inline: auto;
+  background: #1a1c2a;
+  border-color: #d8e0ed;
+}
+.demo-frame {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  max-width: none;
+  border: 0;
+  background: transparent;
+  visibility: hidden;
+  transform: translateX(-50%);
+  transform-origin: top center;
+}
+.demo-frame-shell.is-loaded .demo-frame {
+  visibility: visible;
+}
+.demo-frame-poster {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  color: var(--blue-ink);
+  background: linear-gradient(135deg, #f7f9fc, #e8edf6);
+  text-align: center;
+}
+.demo-frame-poster strong {
+  font-family: var(--heading);
+  font-size: clamp(17px, 2.5vw, 24px);
+  font-weight: 800;
+}
+.demo-frame-poster span {
+  max-width: 34ch;
+  color: #59667a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.demo-frame-shell-chat .demo-frame-poster {
+  color: #fff;
+  background: linear-gradient(145deg, #07183a, #003399);
+}
+.demo-frame-shell-chat .demo-frame-poster span {
+  color: rgba(255, 255, 255, 0.8);
+}
+.demo-frame-shell.is-loaded .demo-frame-poster {
+  display: none;
+}
 .chat-app {
   overflow: hidden;
   color: #182235;
@@ -3057,13 +3168,13 @@ button {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .kanban-progress > span,
-  .chat-row {
+  :root:not(.demo-motion-opt-in) .kanban-progress > span,
+  :root:not(.demo-motion-opt-in) .chat-row {
     animation: none;
     opacity: 1;
     transform: none;
   }
-  .kanban-progress > span {
+  :root:not(.demo-motion-opt-in) .kanban-progress > span {
     left: calc(100% - 8px);
   }
 }
@@ -3339,35 +3450,37 @@ button {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .publication-kanban .kanban-panel,
-  .publication-kanban .publication-preview,
-  .publication-kanban .kanban-card-featured,
-  .publication-kanban .kanban-card-filler,
-  .publication-kanban .kanban-progress > span,
-  .kanban-moving-card,
-  .chat-demo .chat-row,
-  .chat-composer-caret,
-  .chat-typing-bubble i {
+  :root:not(.demo-motion-opt-in) .publication-kanban .kanban-panel,
+  :root:not(.demo-motion-opt-in) .publication-kanban .publication-preview,
+  :root:not(.demo-motion-opt-in) .publication-kanban .kanban-card-featured,
+  :root:not(.demo-motion-opt-in) .publication-kanban .kanban-card-filler,
+  :root:not(.demo-motion-opt-in) .publication-kanban .kanban-progress > span,
+  :root:not(.demo-motion-opt-in) .kanban-moving-card,
+  :root:not(.demo-motion-opt-in) .chat-demo .chat-row,
+  :root:not(.demo-motion-opt-in) .chat-composer-caret,
+  :root:not(.demo-motion-opt-in) .chat-typing-bubble i {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
   }
-  .publication-kanban .kanban-moving-card,
-  .chat-demo .chat-typing {
+  :root:not(.demo-motion-opt-in) .publication-kanban .kanban-moving-card,
+  :root:not(.demo-motion-opt-in) .chat-demo .chat-typing {
     display: none !important;
   }
-  .kanban-panel,
-  .publication-preview {
+  :root:not(.demo-motion-opt-in) .kanban-panel,
+  :root:not(.demo-motion-opt-in) .publication-preview {
     opacity: 1 !important;
     transform: none !important;
   }
-  .chat-demo.is-playing .chat-row:not(.chat-typing) {
+  :root:not(.demo-motion-opt-in)
+    .chat-demo.is-playing
+    .chat-row:not(.chat-typing) {
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
   }
-  .chat-messages {
+  :root:not(.demo-motion-opt-in) .chat-messages {
     scroll-behavior: auto !important;
   }
 }

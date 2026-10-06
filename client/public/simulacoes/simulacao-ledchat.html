@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demonstração animada do LedChat</title>
+</head>
+<body>
+<!-- CÓDIGO ORIGINAL ENVIADO PELO USUÁRIO: INÍCIO -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+.chat-wrapper{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.chat-app{
+  width:350px;
+  height:70vh;
+  display:flex;
+  flex-direction:column;
+  border-radius:20px;
+  overflow:hidden;
+  font-family:'Montserrat', sans-serif;
+  color:#fff;
+
+  --bg:#1a1c2a;
+  --scroll-track:rgba(255,255,255,.06);
+  --scroll-thumb:rgba(255,255,255,.25);
+
+  background:var(--bg);
+  transition:background .3s;
+}
+
+/* HEADER */
+.header{
+  height:56px;
+  border-bottom:1px solid rgba(255,255,255,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+}
+
+/* MESSAGES */
+.messages{
+  flex:1;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  overflow-y:auto;
+  scrollbar-width:thin;
+  scrollbar-color:var(--scroll-thumb) var(--scroll-track);
+}
+
+.messages::-webkit-scrollbar{width:8px}
+.messages::-webkit-scrollbar-track{background:var(--scroll-track)}
+.messages::-webkit-scrollbar-thumb{
+  background:var(--scroll-thumb);
+  border-radius:10px;
+}
+
+/* ROW */
+.row{
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+}
+
+/* AVATAR */
+.avatar{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+}
+
+/* BUBBLES */
+.bubble{
+  max-width:70%;
+  padding:12px 14px;
+  border-radius:16px;
+  font-size:14px;
+  line-height:1.45;
+  animation:fadeUp .25s ease;
+}
+
+.user{
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  margin-left:auto;
+  border-bottom-right-radius:4px;
+}
+
+.ia{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-bottom-left-radius:4px;
+}
+
+/* TYPING */
+.typing{display:flex;gap:4px}
+.dot{
+  width:6px;
+  height:6px;
+  background:#fff;
+  border-radius:50%;
+  animation:blink 1.4s infinite both;
+}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+
+/* INPUT */
+.input-area{
+  border-top:1px solid rgba(255,255,255,.15);
+  padding:8px 10px;
+}
+
+.input-wrapper{
+  display:flex;
+  align-items:center;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:20px;
+  padding:0 6px 0 14px;
+}
+
+.fake-input{
+  flex:1;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  font-size:14px;
+  color:rgba(255,255,255,.85);
+}
+
+/* SEND BUTTON */
+.send-btn{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.send-btn svg{
+  width:18px;
+  height:18px;
+  fill:#fff;
+  transform:rotate(-35deg);
+}
+
+
+.send-btn:hover{transform:scale(1.05)}
+.send-btn:active{transform:scale(.95)}
+
+/* ANIMATIONS */
+@keyframes blink{
+  0%{opacity:.2}
+  20%{opacity:1}
+  100%{opacity:.2}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+
+<div class="chat-wrapper">
+  <div class="chat-app" id="chat">
+    <div class="header" id="header"></div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="input-area">
+      <div class="input-wrapper">
+        <div class="fake-input" id="input"></div>
+
+        <div class="send-btn">
+          <!-- ÍCONE DE ENVIO -->
+          <svg viewBox="0 0 24 24">
+            <path d="M2 21l21-9L2 3v7l15 2-15 2z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const flows=[
+  {
+    title:"Assistente p/ Imóveis",
+    bg:"#1a1c2a",
+    scroll:"#3b82f6",
+    pairs:[
+      ["Olá, estou procurando um apartamento.","Claro 😊 Você pretende comprar ou alugar?"],
+      ["Comprar, com dois quartos.","Perfeito! Em qual região você prefere?"],
+      ["Perto da praia.","Ótima escolha 🌊 Qual faixa de valor?"],
+      ["Até 450 mil.","Tenho ótimas opções dentro desse perfil."]
+    ],
+    cta:"Posso te enviar algumas opções 🏠"
+  },
+  {
+    title:"Assistente p/ Estética",
+    bg:"#5e1ab5",
+    scroll:"#c084fc",
+    pairs:[
+      ["Oi, queria cuidar melhor da minha pele.","Que ótimo 😊 Você já faz algum tratamento?"],
+      ["Nunca fiz.","Podemos começar com uma limpeza de pele profunda."],
+      ["Ajuda mesmo?","Sim! Melhora textura, viço e saúde da pele."]
+    ],
+    cta:"Posso agendar sua avaliação ✨"
+  },
+  {
+    title:"Assistente p/ Advocacia",
+    bg:"#024d3a",
+    scroll:"#10b981",
+    pairs:[
+      ["Preciso de orientação jurídica.","Em qual área posso ajudar?"],
+      ["Trabalhista.","É sobre rescisão ou direitos não pagos?"],
+      ["Sim.","Podemos analisar seu caso com calma."]
+    ],
+    cta:"Posso agendar uma consulta ⚖️"
+  }
+];
+
+let flow=0, step=0;
+
+const chat=document.getElementById("chat");
+const header=document.getElementById("header");
+const messages=document.getElementById("messages");
+const input=document.getElementById("input");
+
+function applyTheme(f){
+  chat.style.setProperty("--bg",f.bg);
+  chat.style.setProperty("--scroll-thumb",f.scroll);
+}
+
+function clearChat(){messages.innerHTML=""}
+
+function row(from,text){
+  const r=document.createElement("div");
+  r.className="row";
+  if(from==="user") r.style.flexDirection="row-reverse";
+  r.innerHTML=`
+    <div class="avatar">${from==="user"?"🙂":"🤖"}</div>
+    <div class="bubble ${from}">${text}</div>
+  `;
+  messages.appendChild(r);
+  messages.scrollTop=messages.scrollHeight;
+}
+
+function typingIA(){
+  const r=document.createElement("div");
+  r.className="row";
+  r.innerHTML=`
+    <div class="avatar">🤖</div>
+    <div class="bubble ia typing">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+  `;
+  messages.appendChild(r);
+  return r;
+}
+
+async function bot(text){
+  const t=typingIA();
+  await new Promise(r=>setTimeout(r,800));
+  t.remove();
+  row("ia",text);
+}
+
+async function nextFlow(){
+  clearChat();
+  flow=(flow+1)%flows.length;
+  step=0;
+  applyTheme(flows[flow]);
+  header.textContent=flows[flow].title;
+}
+
+async function run(){
+  const f=flows[flow];
+  const [q,a]=f.pairs[step];
+
+  input.textContent=q;
+  await new Promise(r=>setTimeout(r,400));
+  row("user",q);
+  input.textContent="";
+  await bot(a);
+
+  step++;
+
+  if(step>=f.pairs.length){
+    await bot(f.cta);
+    await new Promise(r=>setTimeout(r,1400));
+    await nextFlow();
+  }
+
+  setTimeout(run,2000);
+}
+
+applyTheme(flows[0]);
+header.textContent=flows[0].title;
+run();
+</script>
+
+<!-- CÓDIGO ORIGINAL ENVIADO PELO USUÁRIO: FIM -->
+</body>
+</html>

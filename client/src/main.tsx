@@ -72,129 +72,128 @@ leadForm?.addEventListener("submit", event => {
 const year = document.querySelector<HTMLElement>("#current-year");
 if (year) year.textContent = String(new Date().getFullYear());
 
-const chatDemo = document.querySelector<HTMLElement>(".chat-demo");
-const chatMessageList = chatDemo?.querySelector<HTMLElement>(".chat-messages");
-const chatRows = chatDemo
-  ? Array.from(
-      chatDemo.querySelectorAll<HTMLElement>(".chat-row:not(.chat-typing)")
-    )
-  : [];
-const typingRows = chatDemo
-  ? Array.from(chatDemo.querySelectorAll<HTMLElement>(".chat-typing"))
-  : [];
-
-let chatTimer: number | undefined;
-let chatIsPlaying = false;
-let chatStepIndex = 0;
-
-const chatSequence: Array<{
-  show?: HTMLElement;
-  hide?: HTMLElement;
-  reset?: boolean;
-  wait: number;
-}> =
-  chatRows.length === 6 && typingRows.length === 3
-    ? [
-        { show: chatRows[0], wait: 700 },
-        { show: typingRows[0], wait: 900 },
-        { hide: typingRows[0], show: chatRows[1], wait: 1150 },
-        { show: chatRows[2], wait: 1050 },
-        { show: typingRows[1], wait: 900 },
-        { hide: typingRows[1], show: chatRows[3], wait: 1200 },
-        { show: chatRows[4], wait: 1050 },
-        { show: typingRows[2], wait: 900 },
-        { hide: typingRows[2], show: chatRows[5], wait: 2100 },
-        { reset: true, wait: 550 },
-      ]
-    : [];
-
-function resetChatRows() {
-  [...chatRows, ...typingRows].forEach(row => {
-    row.classList.remove("is-visible");
-  });
-  if (chatMessageList) chatMessageList.scrollTop = 0;
-}
-
-function stopChatCycle() {
-  chatIsPlaying = false;
-  if (chatTimer !== undefined) {
-    window.clearTimeout(chatTimer);
-    chatTimer = undefined;
-  }
-  resetChatRows();
-}
-
-function runChatStep() {
-  if (!chatIsPlaying || chatSequence.length === 0) return;
-  const step = chatSequence[chatStepIndex];
-  if (!step) return;
-
-  if (step.reset) {
-    resetChatRows();
-    chatStepIndex = 0;
-  } else {
-    step.hide?.classList.remove("is-visible");
-    step.show?.classList.add("is-visible");
-    if (step.show && !step.show.classList.contains("chat-typing")) {
-      chatMessageList?.scrollTo({
-        top: chatMessageList.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-    chatStepIndex += 1;
-  }
-
-  chatTimer = window.setTimeout(runChatStep, step.wait);
-}
-
-function startChatCycle() {
-  if (!chatDemo || chatSequence.length === 0) return;
-  stopChatCycle();
-  chatDemo.classList.remove("is-playing");
-  void chatDemo.offsetWidth;
-  chatDemo.classList.add("is-playing");
-  chatIsPlaying = true;
-  chatStepIndex = 0;
-  runChatStep();
-}
-
-const animatedSections = Array.from(
-  document.querySelectorAll<HTMLElement>(".publication-kanban, .chat-demo")
+const demoFrames = Array.from(
+  document.querySelectorAll<HTMLIFrameElement>(
+    "iframe[data-demo-frame][data-demo-src]"
+  )
 );
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let manualMotionOptIns = new WeakSet<HTMLIFrameElement>();
 
-if (animatedSections.length > 0 && "IntersectionObserver" in window) {
+function getFrameShell(frame: HTMLIFrameElement): HTMLElement | null {
+  return frame.closest<HTMLElement>(".demo-frame-shell");
+}
+
+function resizeDemoFrames() {
+  demoFrames.forEach(frame => {
+    const shell = getFrameShell(frame);
+    const designWidth = Number(frame.dataset.frameWidth);
+    const contentWidth = Number(frame.dataset.frameContentWidth) || designWidth;
+    const designHeight = Number(frame.dataset.frameHeight);
+    if (!shell || !designWidth || !contentWidth || !designHeight) return;
+
+    const availableWidth = shell.getBoundingClientRect().width;
+    const scale =
+      availableWidth > 0 ? Math.min(1, availableWidth / contentWidth) : 1;
+    frame.style.width = `${designWidth}px`;
+    frame.style.height = `${designHeight}px`;
+    frame.style.transform = `translateX(-50%) scale(${scale})`;
+    shell.style.height = `${Math.ceil(designHeight * scale)}px`;
+  });
+}
+
+function startDemo(frame: HTMLIFrameElement, restart = false) {
+  const source = frame.dataset.demoSrc;
+  if (!source || (!restart && frame.dataset.playing === "true")) return;
+
+  getFrameShell(frame)?.classList.remove("is-loaded");
+  frame.dataset.playing = "true";
+  const separator = source.includes("?") ? "&" : "?";
+  frame.src = `${source}${separator}replay=${Date.now()}`;
+}
+
+function stopDemo(frame: HTMLIFrameElement) {
+  if (frame.dataset.playing !== "true") return;
+  frame.dataset.playing = "false";
+  getFrameShell(frame)?.classList.remove("is-loaded");
+  frame.removeAttribute("src");
+}
+
+demoFrames.forEach(frame => {
+  frame.addEventListener("load", () => {
+    if (frame.dataset.playing === "true") {
+      getFrameShell(frame)?.classList.add("is-loaded");
+    }
+  });
+});
+
+function replayFrameFor(button: HTMLButtonElement) {
+  const kind = button.dataset.demoReplay;
+  const frame = demoFrames.find(
+    candidate => candidate.dataset.demoFrame === kind
+  );
+  if (!frame) return;
+
+  manualMotionOptIns.add(frame);
+  frame.scrollIntoView({
+    behavior: reducedMotion.matches ? "auto" : "smooth",
+    block: "center",
+  });
+  const bounds = frame.getBoundingClientRect();
+  const isVisible =
+    bounds.width > 0 &&
+    bounds.height > 0 &&
+    bounds.top < window.innerHeight &&
+    bounds.bottom > 0 &&
+    bounds.left < window.innerWidth &&
+    bounds.right > 0;
+
+  if ("IntersectionObserver" in window && !isVisible) {
+    stopDemo(frame);
+    return;
+  }
+  startDemo(frame, true);
+}
+
+document
+  .querySelectorAll<HTMLButtonElement>("[data-demo-replay]")
+  .forEach(button => {
+    button.addEventListener("click", () => replayFrameFor(button));
+  });
+
+resizeDemoFrames();
+window.addEventListener("resize", resizeDemoFrames, { passive: true });
+
+if ("IntersectionObserver" in window) {
   const visibilityObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
-        const section = entry.target as HTMLElement;
+        const frame = entry.target as HTMLIFrameElement;
         if (entry.isIntersecting) {
-          if (section === chatDemo) {
-            startChatCycle();
-          } else {
-            section.classList.add("is-playing");
+          if (!reducedMotion.matches || manualMotionOptIns.has(frame)) {
+            startDemo(frame);
           }
         } else {
-          section.classList.remove("is-playing");
-          if (section === chatDemo) stopChatCycle();
+          stopDemo(frame);
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.05, rootMargin: "0px 0px 72px 0px" }
   );
 
-  const syncMotionPreference = () => {
+  const observeFrames = () => {
     visibilityObserver.disconnect();
-    if (reducedMotion.matches) {
-      animatedSections.forEach(section => {
-        section.classList.remove("is-playing");
-      });
-      stopChatCycle();
-      return;
-    }
-    animatedSections.forEach(section => visibilityObserver.observe(section));
+    demoFrames.forEach(frame => visibilityObserver.observe(frame));
   };
 
-  syncMotionPreference();
-  reducedMotion.addEventListener("change", syncMotionPreference);
+  observeFrames();
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) {
+      manualMotionOptIns = new WeakSet<HTMLIFrameElement>();
+      demoFrames.forEach(stopDemo);
+    }
+    observeFrames();
+  });
+} else if (!reducedMotion.matches) {
+  demoFrames.forEach(frame => startDemo(frame));
 }
